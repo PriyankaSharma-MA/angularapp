@@ -1,0 +1,320 @@
+/* CSS */
+/*-------------------------
+	Simple reset
+--------------------------*/
+
+
+*{
+	margin:0;
+	padding:0;
+}
+
+
+/*-------------------------
+	General Styles
+--------------------------*/
+
+
+body{
+	font:15px/1.3 'Open Sans', sans-serif;
+	color: #5e5b64;
+	text-align:center;
+}
+
+a, a:visited {
+	outline:none;
+	color:white;
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration:none;
+}
+
+section, footer, header, aside, nav{
+	display: block;
+}
+
+
+/*-------------------------
+	The menu
+--------------------------*/
+
+
+.nav{
+	display:inline-block;
+	margin:0px;
+	
+	/* box-shadow:0 1px 1px #ccc;height: 8%; */
+	border-radius:2px;
+	
+	margin-bottom:5px;
+	height: 7%;
+	background-color:rgb(255,255,255);
+}
+
+.nav div{
+	/* display:inline-block; */
+	/* padding: 8px 60px; */
+	color:#fff !important;
+	font-weight:bold;
+	font-size:12px;
+	text-decoration:none !important;
+	line-height:1;
+	/* background-color:#5b9bd5; */
+
+	-webkit-transition:background-color 0.25s;
+	-moz-transition:background-color 0.25s;
+	transition:background-color 0.25s;
+	margin: 5px;
+	margin-right: 0px;
+	margin-left:2px;
+	box-shadow:0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+.navbar{
+	display:inline-block;
+	padding: 8px 60px;
+	color:#fff !important;
+	font-weight:bold;
+	font-size:12px;
+	text-decoration:none !important;
+	line-height:1;
+	background-color:#5b9bd5;
+
+	-webkit-transition:background-color 0.25s;
+	-moz-transition:background-color 0.25s;
+	transition:background-color 0.25s;
+}
+
+.nav  div:first-child{
+	 /*  border-radius:2px 0 0 2px; */
+		border-radius:2px ;
+}
+
+.nav  div:last-child{
+	border-radius:0 2px 2px 0;
+}
+
+.nav.dashboard .dashboard,
+.nav.link .link,
+.nav.support .support,
+.nav.about .about, 
+.nav.filter .filter{
+ background-color:#5867E3;
+}
+
+
+
+
+
+div {
+ /*  display: flex;
+  flex-direction: column;
+  justify-content: center; */
+}
+
+
+
+/* Pattern styles */
+.container {
+	display: flex;
+	background-color: #f3f3f3 !important;
+	height:100%;
+}
+
+.left-half {
+ background-color:rgb(255,255,255)
+    /*flex: 1;
+  padding: 1rem; */
+}
+
+.right-half {
+  /* background-color: #b6701e; */
+  flex: 1;
+  padding: 10px;
+  display: flex
+}
+div :focus{
+  border: thin solid black;
+}
+md-menu-bar{
+	padding: 0px;
+	display: inline;
+}
+.row {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: left; /* for centering 3 blocks in the center */
+	/* justify-content: space-between; for space in between */
+}
+.block {
+	width: 25%;
+	justify-content: center;
+}
+md-content{
+	width: 100%;
+}
+md-card{
+	height: 95%
+}
+ul{
+margin:3px;
+}
+li {
+  text-align:left;
+  margin-left: 1.3em;
+  
+}
+.summaryContainer{
+	height: 55%;
+	color: #666!important;
+	font-weight: 100!important;
+	font-family: Roboto!important;
+	font-size: 14px;
+
+}
+.iconContainer{
+	margin-top: 40px;
+}
+.summaryContainer .block{
+display:flex;
+}
+md-menu-item :hover{
+background: rgba(0,0,0,.04);
+}
+md-menu-item {
+cursor: pointer;
+    outline: 0;
+}
+div :focus{
+border:none;
+}
+
+.shadow{
+box-shadow:0 .5rem 1rem rgba(0,0,0,.15)!important
+}
+.qvobject{
+background-color:rgb(255,255,255);
+display: inline-block; 
+height: 200px; 
+min-width: 200px;
+border:1px solid lightgrey;
+margin-top:10px;
+margin-right:5px;
+
+}
+#container {
+text-align:left;
+}
+.otislogo{
+    text-align: center !important;
+    margin-left: 8px;
+    margin-bottom: 30px;
+    margin-top: 25px;
+}
+
+
+ul{
+line-height:22px
+}
+.reportContainer
+{
+ height:100%;
+ display:none;
+}
+.filtercontainer{
+
+    float: left;
+    margin-left: 275px;  
+   
+    position: absolute;
+    top: 65px;
+	 /*  height: 450px;  min-width: 650px; box-shadow: 1px 1px 1px 1px;
+		border-style: outset;*/
+		    border: 1px solid #D5D5D5;
+    background-color: #ffffff;
+    color: #222222;
+	border-radius:3px;
+	width:50%;
+	 display:none;
+}
+ .holds-the-iframe {
+  background:url('loader.gif') center center no-repeat;
+ }
+.matselectfontsize
+{
+   font-size: 12px;
+    font-family: 'Roboto' !important;
+    color: #6f6f6f;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.md-select-value{
+    color: rgba(0,0,0,.87);
+	
+}
+
+md-content
+{
+background-color:#f3f3f3 !important;
+ font-size: 12px;
+    font-family: Roboto,"Helvetica Neue",sans-serif !important;
+    color: #6f6f6f;
+}
+.md-toolbar-tools{
+background:linear-gradient(to bottom, #f6f7f9 0%, #ebedf0 100%);
+    border-bottom: 1px solid #d9d9d9;
+    background-color: #f6f7f9;
+    color: #1b1d1f;
+    font-weight: normal;
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:0px;
+	border-top-left-radius:3px;
+	border-top-right-radius:3px;
+	height:40px !important;
+}
+.filterdiv{
+height:50px;
+}
+.filterdiv div{
+width :33%
+
+}
+.actionfilterdiv {
+    justify-content: center;
+    display: flex;
+	width:85%;
+}
+.actionfilterdiv div{
+    margin-right: 5px;
+}
+
+md-input-container{
+    width: 130px;
+    text-align: left;
+}
+md-select-menu md-content
+{
+background-color:white !important;
+}
+md-option .md-text{
+font-size:12px;
+}
+md-input-container>md-select{
+    font-size: 12px;
+    font-family: Roboto,"Helvetica Neue",sans-serif !important;
+    color: #6f6f6f;
+}
+.md-datepicker-input{
+    font-size: 12px;
+    font-family: Roboto,"Helvetica Neue",sans-serif !important;
+}
+.datefilterdiv{
+margin-left: 32px;
+}
+.bottomdiv{
+    margin-top: 25px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,15 @@
+{
+	"type": "mashup",
+	"name": "Using AngularJS in mashups",
+	"description": "Basic responsive mashup template",
+	"version": "1.7",
+	"author": "qlik",
+	"homepage": "",
+	"keywords": "qlik-sense, visualization, mashup",
+	"license": "",
+	"repository": "",
+	"dependencies": {
+		"qlik-sense": ">=3.0.x"
+	},
+	  "preview": "OTIS.jpg"
+}
