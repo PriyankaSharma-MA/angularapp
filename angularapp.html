@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+
 <html qva-bootstrap="false">
 
 <head>
@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
 
 	<script src="../../resources/assets/external/requirejs/require.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.1/angular-animate.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
@@ -31,10 +31,7 @@
 	<!-- The main CSS file -->
 	<link href="style.css" rel="stylesheet" />
 
-	<!--[if lt IE 9]>
-			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
 	<style>
 		.dropbtn {
 			/* background-color: #4CAF50; */
@@ -48,8 +45,12 @@
 			position: relative;
 			display: inline-block;
 			background-color: #5b9bd5;
-			padding-top: 12px !important;
+			/* padding-top: 12px !important; */ 
 			cursor: pointer;
+			color:white;
+			font-size: 14px;
+			font-weight: 100!important;
+            font-family: Roboto!important;
 		}
 
 		.dropdown-content {
@@ -92,9 +93,10 @@
 
 <!-- The ng-app directive tells angular that the code below should be evaluated -->
 
-<body ng-app="firstApplication" ng-controller="MainCtrl">
+<body>
 	<section class="container">
-		<div id="leftContainer" class="left-half shadow" ng-cloak>
+		<div id="leftcontainer"  class="left-half shadow" >
+			
 			<md-toolbar class="md-menu-toolbar">
 				<div layout="row">
 					<div>
@@ -107,13 +109,13 @@
 									<md-menu-content style="min-width: 0px;">
 										<md-menu-item>
 											<md-tooltip class="custom-tooltip">Sale</md-tooltip>
-											<div style="text-align:center !important;" onclick="summaryShow('sale')">
+											<div style="text-align:center !important;" onclick="summaryShow()">
 												<img src="sale.png" height="32" width="auto" alt="image">
 											</div>
 										</md-menu-item>
 										<md-menu-item>
 											<md-tooltip>Finance</md-tooltip>
-											<div style="text-align:center !important;" onclick="summaryShow('finance')">
+											<div style="text-align:center !important;" onclick="summaryShow()">
 												<img src="finance.png" height="32" width="auto" alt="image">
 											</div>
 										</md-menu-item>
@@ -149,38 +151,14 @@
 		<div id="rightContainer" class="right-half">
 			<div style="width: 100%;display: block">
 
-				<div id="navContainer" class="row nav">
-
-					<div id="sale" class="block dropdown">
-						<a class="dropbtn">Dashboard</a>
-
-						<div class="dropdown-content">
-							<a href="#" ng-click="clicked('sale')">Sale_dashboard1</a>
-							<a href="#">Sale_dashboard2</a>
-							<a href="#">Sale_dashboard3</a>
-						</div>
-					</div>
-					<div id="finance" class="block dropdown" style="display:none">
-						<a class="dropbtn">Dashboard</a>
-
-						<div class="dropdown-content">
-							<a href="#" ng-click="clicked('finance')">Finance_dashboard1</a>
-							<a href="#">Finance_dashboard2</a>
-							<a href="#">Finance_dashboard3</a>
-						</div>
-					</div>
-					<div class="block dropdown">
-						<a href="#" class="link" ng-click="active='link'">Important Links</a>
-					</div>
-					<div class="block dropdown">
-						<a href="#" class="support" ng-click="active='support'">Support</a>
-					</div>
-					<div class="block dropdown">
-						<a href="#" class="about" ng-click="active='about'">About</a>
-					</div>
-					<div class="block dropdown" style="cursor:pointer" onclick="showFilter()">
-						<a href="#" class="filter" ng-click="active='filter'"> Filter</a>
-					</div>
+				<div id="material" ng-controller="controller.main" class="navContainer row nav">
+				
+					<md-button class="block dropdown" ng-click="displayChart()">Dashboard</md-button>
+			        <md-button class="block dropdown" >Important Links</md-button>
+					<md-button class="block dropdown" >Support</md-button>
+					<md-button class="block dropdown" >About</md-button>
+					<md-button class="block dropdown" ng-click="showFilter()">Filter</md-button>				
+					
 				</div>
 
 				<div id="iconContainer" class="row iconContainer">
@@ -261,7 +239,33 @@
 						</md-content>
 					</div>
 				</div>
-				<div id="reportContainer" class="reportContainer" ng-view="">
+				<div id="dashboardContainer">
+					<div id="qlik">
+
+						<!--Error Popup-->
+
+
+						<div id="popup">
+
+
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closePopup">
+
+
+								<span aria-hidden="true">×</span>
+
+
+							</button>
+
+
+							<p id="popupText"></p>
+
+
+						</div>
+
+
+					</div>
+				</div>
+				<div id="reportContainer" class="reportContainer">
 
 				</div>
 
@@ -278,7 +282,7 @@
 
 								<md-input-container>
 									<label>Select Region</label>
-									<md-select ng-model="">
+									<md-select ng-model="region">
 										<md-option value="1">1</md-option>
 										<md-option value="2">2</md-option>
 									</md-select>
@@ -289,7 +293,7 @@
 								<md-input-container>
 									<label>Select Sub Region
 									</label>
-									<md-select ng-model="">
+									<md-select ng-model="subregion">
 										<md-option>
 											<em>None</em>
 										</md-option>
@@ -302,7 +306,7 @@
 								<md-input-container>
 									<label>Select Category
 									</label>
-									<md-select ng-model="">
+									<md-select ng-model="category">
 										<md-option>
 											<em>None</em>
 										</md-option>
@@ -318,7 +322,7 @@
 								<md-input-container>
 									<label>Select Country
 									</label>
-									<md-select ng-model="">
+									<md-select ng-model="country">
 										<md-option>
 											<em>None</em>
 										</md-option>
@@ -330,7 +334,7 @@
 								<md-input-container>
 									<label>Select Customer
 									</label>
-									<md-select ng-model="">
+									<md-select ng-model="customer">
 										<md-option>
 											<em>None</em>
 										</md-option>
@@ -341,7 +345,7 @@
 								<md-input-container>
 									<label>Select Branch
 									</label>
-									<md-select ng-model="">
+									<md-select ng-model="branch">
 										<md-option>
 											<em>None</em>
 										</md-option>
@@ -356,7 +360,7 @@
 								<md-input-container>
 									<label>Select Area
 									</label>
-									<md-select ng-model="">
+									<md-select ng-model="area">
 										<md-option>
 											<em>None</em>
 										</md-option>
@@ -366,7 +370,7 @@
 							<div>
 								<md-input-container>
 									<label>Select Product</label>
-									<md-select ng-model="">
+									<md-select ng-model="product">
 										<md-option>
 											<em>None</em>
 										</md-option>
@@ -376,7 +380,7 @@
 							<div>
 								<md-input-container>
 									<label>Select Country Code</label>
-									<md-select ng-model="">
+									<md-select ng-model="code">
 										<md-option>
 											<em>None</em>
 										</md-option>
@@ -392,7 +396,7 @@
 							<div>
 								<md-input-container>
 									<label>Select Currency</label>
-									<md-select ng-model="">
+									<md-select ng-model="currency">
 										<md-option>
 											<em>$</em>
 										</md-option>
@@ -453,9 +457,8 @@
 		</div>
 
 
-		<!--Add host to this link if the mashup is on an external webserver-->
-
-
+		<!--    <script src="qliksense.js"></script>Add host to this link if the mashup is on an external webserver-->
+<script src="qliksense.js"></script>
 		<script src="angularapp.js"></script>
 	</section>
 

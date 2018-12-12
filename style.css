@@ -45,11 +45,11 @@ section, footer, header, aside, nav{
 	display:inline-block;
 	margin:0px;
 	
-	/* box-shadow:0 1px 1px #ccc;height: 8%; */
+	/* height: 7%;box-shadow:0 1px 1px #ccc;height: 8%; */
 	border-radius:2px;
 	
 	margin-bottom:5px;
-	height: 7%;
+	
 	background-color:rgb(255,255,255);
 }
 
@@ -218,11 +218,7 @@ text-align:left;
 ul{
 line-height:22px
 }
-.reportContainer
-{
- height:100%;
- display:none;
-}
+
 .filtercontainer{
 
     float: left;
@@ -317,4 +313,13 @@ margin-left: 32px;
 .bottomdiv{
     margin-top: 25px;
     margin-bottom: 10px;
+}
+#dashboardContainer{
+ height:100%;
+ display:none;
+}
+.reportContainer
+{
+ height:100%;
+ display:none;
 }

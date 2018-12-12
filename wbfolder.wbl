@@ -2,7 +2,6 @@ angularapp.qext;
 angularapp.html;
 angularapp.js;
 angularapp.css;
-qliksense-card.html;
 polymer-mixins.html;
 preview.png;
 template.ng.html;
@@ -19,4 +18,5 @@ Logout.png;
 cancelbutton.png;
 clearbutton.png;
 savebutton.png;
-loader.gif
+loader.gif;
+qliksense.js
