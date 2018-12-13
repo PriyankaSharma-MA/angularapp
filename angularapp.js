@@ -1,4 +1,6 @@
 
+var SelectedArea="WHQ";
+showDashboard(SelectedArea)
 
 var prefix = window.location.pathname.substr(0, window.location.pathname.toLowerCase().lastIndexOf("/extensions") + 1);
 
@@ -95,15 +97,10 @@ var data = {
 headers: [],
 rows: []
 };
-var dashboardData={
-area:[],
-dashboard:[],
-dashboardName: [],
-dashboardObject: [],
-links:[]
-}
+
 
 function setCases ( reply, app ) {
+ 
 //alert('setCases')
    data.headers.length = 0;
    data.rows.length = 0;
@@ -119,19 +116,7 @@ function setCases ( reply, app ) {
 		   data.rows.push( row );
 	   } );
    })
-   for(var i=0;i< data.rows.length;i++)
-   {
-   if(data.rows[i][0].qText=="AR")
-   {
-  // alert('ar')
-   dashboardData.area.push( data.rows[i][0].qText);
-   dashboardData.dashboard.push( data.rows[i][1].qText);
-   dashboardData.dashboardName.push( data.rows[i][2].qText);
-   dashboardData.dashboardObject.push( data.rows[i][3].qText);
-   dashboardData.links.push( data.rows[i][4].qText);
-   }
-  
-   }
+
    };
 var dataApp = qlik.openApp('Dashboards list.qvf', config);
 dataApp.createCube( {
@@ -170,12 +155,32 @@ dataApp.createCube( {
 //material.controller('controller.main', function ($scope) {
 
 material.controller( "controller.main", ['$scope', function ( $scope ) {
+
 $scope.showFilter = function(){
 
 	 $( "#filtercontainer" ).fadeIn()
 	}
+	
 $scope.displayChart = function(){
-
+var dashboardData={
+area:[],
+dashboard:[],
+dashboardName: [],
+dashboardObject: [],
+links:[]
+}
+   for(var i=0;i< data.rows.length;i++)
+   {
+   if(data.rows[i][0].qText==SelectedArea)
+   {
+   //alert(SelectedArea)
+   dashboardData.area.push( data.rows[i][0].qText);
+   dashboardData.dashboard.push( data.rows[i][1].qText);
+   dashboardData.dashboardName.push( data.rows[i][2].qText);
+   dashboardData.dashboardObject.push( data.rows[i][3].qText);
+   dashboardData.links.push( data.rows[i][4].qText);
+   }
+     }
 var app;
 var apparr=[]
 var strdiv="<div id='container' style='display:flex'>";
