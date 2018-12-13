@@ -254,10 +254,11 @@ line-height:22px
     color: #222222;
 	border-radius:3px;
 	width:50%;
-	 display:none;
+	display:none;
+	z-index: 1;
 }
  .holds-the-iframe {
-  background:url('loader.gif') center center no-repeat;
+  background:url('assets/loader.gif') center center no-repeat;
  }
 .matselectfontsize
 {
@@ -343,4 +344,16 @@ margin-left: 32px;
 {
  height:100%;
  display:none;
+}
+.btn-success {
+background-color: #00a65a !important;
+border-color: #008d4c !important;
+}
+md-menu-item {
+    margin-bottom: 20px;
+}
+#material
+{
+    width: 100%;
+    display: flex;
 }

@@ -186,6 +186,8 @@ var apparr=[]
 var strdiv="<div id='container' style='display:flex'>";
 //alert('displayChart')
 hide();
+$("#dashboard").addClass("btn-success");
+//document.getElementById('dashboard').addClass("btn-success");
 $( "#dashboardContainer" ).show();
  for(var i=0;i<dashboardData.dashboardName.length;i++){
   $scope.iterations = [];

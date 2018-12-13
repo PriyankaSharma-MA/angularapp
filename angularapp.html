@@ -95,7 +95,10 @@
 
 <body>
 	<section class="container">
-		<div id="leftcontainer"  class="left-half shadow" >
+	<div id="material"  ng-controller="controller.main">
+	
+	
+		<div id="leftcontainer"   class="left-half shadow" >
 			
 			<md-toolbar class="md-menu-toolbar">
 				<div layout="row">
@@ -107,10 +110,10 @@
 							<div class="div-position-fixed">
 								<md-menu>
 									<md-menu-content style="min-width: 0px;">
-										<md-menu-item>
+										<md-menu-item style="margin-top:20px;">
 											<md-tooltip class="custom-tooltip">WHQ</md-tooltip>
 											<div style="text-align:center !important;" onclick="showDashboard('WHQ')">
-												<img src="assets/WHQ.png" height="32" width="auto" alt="image">
+												<img src="assets/useraccess.png" height="32" width="auto" alt="image">
 											</div>
 										</md-menu-item>
 										<md-menu-item>
@@ -122,7 +125,7 @@
 										<md-menu-item>
 											<md-tooltip>JC</md-tooltip>
 											<div style="text-align:center !important" onclick="showDashboard('JC')">
-												<img src="assets/JC.png" height="32" width="auto" alt="image">
+												<img src="assets/revenue.png" height="32" width="auto" alt="image">
 											</div>
 										</md-menu-item>
 										<!-- <md-menu-item>
@@ -148,12 +151,12 @@
 				</div>
 			</md-toolbar>
 		</div>
-		<div id="material"  ng-controller="controller.main" class="rightcontainer right-half">
+		<div  class="rightcontainer right-half">
 			<div style="width: 100%;display: block">
 
 				<div id="navContainer"  class="row nav">
 				
-					<md-button class="block dropdown" ng-click="displayChart()">Dashboard</md-button>
+					<md-button id="dashboard" class="block dropdown" ng-click="displayChart()">Dashboard</md-button>
 			        <md-button class="block dropdown" >Important Links</md-button>
 					<md-button class="block dropdown" >Support</md-button>
 					<md-button class="block dropdown" >About</md-button>
@@ -265,7 +268,7 @@
 
 					</div>
 				</div>
-				<div id="reportContainer" class="reportContainer">
+				<div id="reportContainer" class="reportContainer holds-the-iframe">
 
 				</div>
 
@@ -455,7 +458,7 @@
 			</div>
 
 		</div>
-
+</div>
 
 		<!--    <script src="qliksense.js"></script>Add host to this link if the mashup is on an external webserver-->
 <script src="qliksense.js"></script>
