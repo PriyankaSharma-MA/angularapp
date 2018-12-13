@@ -1,3 +1,21 @@
+ angular.module('firstApplication', ['ngMaterial']).controller( "MainCtrl", ['$scope', function ( $scope ) {
+	
+		 $scope.clicked = function (id) {
+			   
+			   $( "#reportContainer" ).show();
+		   $( "#"+id ).show();
+	     //alert(id);
+		 hide();
+		 var url='http://35.188.173.90/#/home/copysubscription';
+		// var url='https://35.192.113.251/sense/app/9cd93190-efaf-4ac2-804d-6be28106f17a/sheet/PfKsJK/state/analysis'
+		 document.getElementById("reportContainer").innerHTML= '<iframe style="width:100%;height:100%;" frameborder="0" src="' + url + '" />';
+		//document.getElementById("durl").innerHTML='<object  data="https://ap.qlikcloud.com/edit/5c07aadff80e309af602a9dd" >';
+		// $('#durl').load('https://ap.qlikcloud.com/edit/5c07aadff80e309af602a9dd');
+		//openDashborad();
+	
+		}
+	}] );
+
 var prefix = window.location.pathname.substr(0, window.location.pathname.toLowerCase().lastIndexOf("/extensions") + 1);
 
 
