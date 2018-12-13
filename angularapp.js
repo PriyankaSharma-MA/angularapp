@@ -1,20 +1,4 @@
- angular.module('firstApplication', ['ngMaterial']).controller( "MainCtrl", ['$scope', function ( $scope ) {
-	
-		 $scope.clicked = function (id) {
-			   
-			   $( "#reportContainer" ).show();
-		   $( "#"+id ).show();
-	     //alert(id);
-		 hide();
-		 var url='http://35.188.173.90/#/home/copysubscription';
-		// var url='https://35.192.113.251/sense/app/9cd93190-efaf-4ac2-804d-6be28106f17a/sheet/PfKsJK/state/analysis'
-		 document.getElementById("reportContainer").innerHTML= '<iframe style="width:100%;height:100%;" frameborder="0" src="' + url + '" />';
-		//document.getElementById("durl").innerHTML='<object  data="https://ap.qlikcloud.com/edit/5c07aadff80e309af602a9dd" >';
-		// $('#durl').load('https://ap.qlikcloud.com/edit/5c07aadff80e309af602a9dd');
-		//openDashborad();
-	
-		}
-	}] );
+
 
 var prefix = window.location.pathname.substr(0, window.location.pathname.toLowerCase().lastIndexOf("/extensions") + 1);
 
@@ -112,8 +96,11 @@ headers: [],
 rows: []
 };
 var dashboardData={
+area:[],
+dashboard:[],
 dashboardName: [],
-dashboardObject: []
+dashboardObject: [],
+links:[]
 }
 
 function setCases ( reply, app ) {
@@ -137,8 +124,11 @@ function setCases ( reply, app ) {
    if(data.rows[i][0].qText=="AR")
    {
   // alert('ar')
+   dashboardData.area.push( data.rows[i][0].qText);
+   dashboardData.dashboard.push( data.rows[i][1].qText);
    dashboardData.dashboardName.push( data.rows[i][2].qText);
    dashboardData.dashboardObject.push( data.rows[i][3].qText);
+   dashboardData.links.push( data.rows[i][4].qText);
    }
   
    }
@@ -163,6 +153,9 @@ dataApp.createCube( {
 		   },
 		   {
 			   "qDef": {"qFieldDefs": ["Object ID"]}
+		   },
+		    {
+			   "qDef": {"qFieldDefs": ["links"]}
 		   }
 		   
 	   ],
@@ -193,9 +186,12 @@ $( "#dashboardContainer" ).show();
   $scope.iterations = [];
   $scope.iterations.push(i)
   apparr.push(qlik.openApp(dashboardData.dashboardName[i] +".qvf", config));
-       //app = qlik.openApp(dashboardData.dashboardName[i] +".qvf", config);
-		//app.getObject( 'QV02', dashboardData.dashboardObject[i] );
-	strdiv=strdiv+"<div  class='qvobject' id='qv" + i + "'" +" onClick=clickdashboarddiv(" +i + ")></div>";	
+
+	//strdiv=strdiv+"<ul><li>"
+	strdiv=strdiv+"<div class='dashboardsummary' onClick=showDashboard('" + dashboardData.links[i] + "')><div class='dashboardsummaryHeader'  >"+ dashboardData.dashboard[i] +"</div>";
+	strdiv=strdiv+"<div  class='qvobject' id='qv" + i + "'></div></div>";
+	
+	//strdiv=strdiv+"</ul></li>"
 }
 strdiv=strdiv+"</div>"
 document.getElementById('qlik').innerHTML =strdiv;
@@ -212,8 +208,6 @@ console.log('controller loaded');
 }]);
 
 angular.bootstrap(document.getElementById('material'), ['QlikSenseMaterial']);
-//angular.bootstrap( document.getElementById('material'), ["QlikSenseMaterial", "qlik-angular"] );
-//angular.bootstrap( document, ['QlikSenseMaterial', "qlik-angular"] );
 
 });
 

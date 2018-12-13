@@ -197,11 +197,32 @@ box-shadow:0 .5rem 1rem rgba(0,0,0,.15)!important
 .qvobject{
 background-color:rgb(255,255,255);
 display: inline-block; 
-height: 200px; 
-min-width: 200px;
-border:1px solid lightgrey;
+height: 120px; 
+width: 180px;
+
 margin-top:10px;
 margin-right:5px;
+
+}
+.dashboardsummary{
+    background-color: rgb(255,255,255);
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,.6);
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 1px;
+	cursor:pointer;
+
+}
+.dashboardsummaryHeader{
+
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    display: flex;
+    font-weight: 400;
+    font-family: robot;
+    color: #595959;
+	padding: 3px;
+
 
 }
 #container {
