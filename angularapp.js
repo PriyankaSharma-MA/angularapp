@@ -1,4 +1,7 @@
-
+function changecss(id)
+{
+alert(id);
+}
 var SelectedArea="WHQ";
 showDashboard(SelectedArea)
 
@@ -155,6 +158,15 @@ dataApp.createCube( {
 //material.controller('controller.main', function ($scope) {
 
 material.controller( "controller.main", ['$scope', function ( $scope ) {
+$scope.changecss = function(event){
+ // alert(event.target.id);
+ 
+  $("#navContainer button").each( function(){
+    $(this).removeClass('btn-success');
+});
+  $("#"+event.target.id).addClass("btn-success");
+	}
+
 
 $scope.showFilter = function(){
 
@@ -181,12 +193,15 @@ links:[]
    dashboardData.links.push( data.rows[i][4].qText);
    }
      }
+
+	
+	 
 var app;
 var apparr=[]
-var strdiv="<div id='container' style='display:flex'>";
+var strdiv="<div id='container'>";
 //alert('displayChart')
 hide();
-$("#dashboard").addClass("btn-success");
+ $( "#filtercontainer" ).fadeOut()
 //document.getElementById('dashboard').addClass("btn-success");
 $( "#dashboardContainer" ).show();
  for(var i=0;i<dashboardData.dashboardName.length;i++){

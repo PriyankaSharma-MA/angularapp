@@ -23,9 +23,15 @@ function hideFilter()
 	{
 	$( "#filtercontainer" ).fadeOut();
 	}
+	function removecss ()
+	{
+	 $("#navContainer button").each( function(){
+    $(this).removeClass('btn-success');
+});
+	}
 function showDashboard(id)
 {
-$("#dashboard").removeClass("btn-success");
+removecss();
 var url='';
    hide();		   
   $( "#reportContainer" ).show();
