@@ -2,7 +2,7 @@ function changecss(id)
 {
 alert(id);
 }
-var SelectedArea="WHQ";
+var SelectedArea="User Access";
 showDashboard(SelectedArea)
 
 var prefix = window.location.pathname.substr(0, window.location.pathname.toLowerCase().lastIndexOf("/extensions") + 1);
@@ -158,19 +158,39 @@ dataApp.createCube( {
 //material.controller('controller.main', function ($scope) {
 
 material.controller( "controller.main", ['$scope', function ( $scope ) {
+$scope.selectedIndex = 0;
+ $scope.filterTab = function(id) {
+   // alert('one selected');
+    $("#global").hide();
+	$("#local").hide();
+	$("#"+ id).show();
+  }
+
 $scope.changecss = function(event){
  // alert(event.target.id);
- 
+   
   $("#navContainer button").each( function(){
     $(this).removeClass('btn-success');
-});
+  });
   $("#"+event.target.id).addClass("btn-success");
+  
+  if(event.target.id !='dashboard' && event.target.id !='filter')
+  {
+  $( "#iconContainer" ).hide();
+  $( "#summaryContainer" ).hide();
+  $( "#dashboardContainer" ).hide(); 
+  $( "#reportContainer" ).hide();
+  $( "#filtercontainer" ).hide();
+  }
 	}
 
 
 $scope.showFilter = function(){
+$scope.selectedIndex = 0;
+ $( "#filtercontainer" ).fadeIn()
+ // $("#wrapper").css({'text-shadow': '0px 0px 10px #000'});
 
-	 $( "#filtercontainer" ).fadeIn()
+	// $( "#filtercontainer" ).fadeIn()
 	}
 	
 $scope.displayChart = function(){

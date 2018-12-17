@@ -119,9 +119,11 @@ div {
 }
 
 .left-half {
- background-color:rgb(255,255,255)
-    /*flex: 1;
-  padding: 1rem; */
+ background-color:rgb(255,255,255);
+
+    padding: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .right-half {
@@ -181,7 +183,8 @@ background: rgba(0,0,0,.04);
 }
 md-menu-item {
 cursor: pointer;
-    outline: 0;
+outline: 0;
+margin-top: 10px;
 }
 div :focus{
 border:none;
@@ -227,8 +230,7 @@ text-align:left;
 .otislogo{
     text-align: center !important;
     margin-left: 8px;
-    margin-bottom: 30px;
-    margin-top: 25px;
+    margin-bottom: 20px;
 }
 
 
@@ -236,23 +238,7 @@ ul{
 line-height:22px
 }
 
-.filtercontainer{
 
-    float: left;
-    margin-left: 275px;  
-   
-    position: absolute;
-    top: 65px;
-	 /*  height: 450px;  min-width: 650px; box-shadow: 1px 1px 1px 1px;
-		border-style: outset;*/
-		    border: 1px solid #D5D5D5;
-    background-color: #ffffff;
-    color: #222222;
-	border-radius:3px;
-	width:50%;
-	display:none;
-	z-index: 1;
-}
  .holds-the-iframe {
   background:url('assets/loader.gif') center center no-repeat;
  }
@@ -345,14 +331,8 @@ margin-left: 32px;
 background-color: #00a65a !important;
 border-color: #008d4c !important;
 }
-md-menu-item {
-    margin-bottom: 20px;
-}
-#material
-{
-    width: 100%;
-    display: flex;
-}
+
+
 #container
 {
 display:block;
@@ -369,3 +349,49 @@ display:block;
 {
 display:flex;
 }
+a.md-button.md-default-theme:not([disabled]):hover, a.md-button:not([disabled]):hover, .md-button.md-default-theme:not([disabled]):hover, .md-button:not([disabled]):hover{
+    background-color: #a3c1da;
+}
+md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+    color: rgb(91, 155, 213);
+    background: rgb(91, 155, 213)
+	}
+	.md-button{
+	margin: 6px 2px;
+	}
+	#material
+{
+    width: 100%;
+    display: flex;
+
+	
+}
+	  #wrapper{
+width: 100%;
+    display: flex;
+	
+	position:absolute;
+    color: transparent;
+
+  }
+  
+  .filtercontainer{
+
+    float: left;
+    margin-left: 275px;   
+    position: absolute;
+    top: 65px;
+    border: 1px solid #D5D5D5;
+    background-color: #ffffff;
+    color: #222222;
+	border-radius:3px;
+	width:50%;
+	display:none;
+	z-index: 1000;
+    /* background:url(http://images3.wikia.nocookie.net/__cb20110703044636/umemaro3d/images/b/b4/Bg-white-50.png);*/
+
+	}
+
+	
+	
+	
