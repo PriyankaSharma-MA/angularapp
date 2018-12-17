@@ -121,7 +121,8 @@ function setCases ( reply, app ) {
    })
 
    };
-var dataApp = qlik.openApp('Dashboards list.qvf', config);
+//var dataApp = qlik.openApp('Dashboards list.qvf', config);
+var dataApp = qlik.openApp('134b462d-3e70-4eb7-92c8-5e53467c8e8b', config);
 dataApp.createCube( {
 	   "qInitialDataFetch": [
 		   {
@@ -144,6 +145,9 @@ dataApp.createCube( {
 		   },
 		    {
 			   "qDef": {"qFieldDefs": ["links"]}
+		   },
+		    {
+			   "qDef": {"qFieldDefs": ["App ID"]}
 		   }
 		   
 	   ],
@@ -199,7 +203,8 @@ area:[],
 dashboard:[],
 dashboardName: [],
 dashboardObject: [],
-links:[]
+links:[],
+appID: [],
 }
    for(var i=0;i< data.rows.length;i++)
    {
@@ -211,6 +216,7 @@ links:[]
    dashboardData.dashboardName.push( data.rows[i][2].qText);
    dashboardData.dashboardObject.push( data.rows[i][3].qText);
    dashboardData.links.push( data.rows[i][4].qText);
+   dashboardData.appID.push( data.rows[i][5].qText);
    }
      }
 
@@ -227,8 +233,8 @@ $( "#dashboardContainer" ).show();
  for(var i=0;i<dashboardData.dashboardName.length;i++){
   $scope.iterations = [];
   $scope.iterations.push(i)
-  apparr.push(qlik.openApp(dashboardData.dashboardName[i] +".qvf", config));
-
+  //apparr.push(qlik.openApp(dashboardData.dashboardName[i] +".qvf", config));
+  apparr.push(qlik.openApp(dashboardData.appID[i], config));
 	//strdiv=strdiv+"<ul><li>"
 	strdiv=strdiv+"<div class='dashboardsummary' onClick=showDashboard('" + dashboardData.links[i] + "')><div class='dashboardsummaryHeader'  >"+ dashboardData.dashboard[i] +"</div>";
 	strdiv=strdiv+"<div  class='qvobject' id='qv" + i + "'></div></div>";
