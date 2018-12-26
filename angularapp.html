@@ -99,60 +99,80 @@
 <body>
 	<section class="mainsection">
 		<div id="material" ng-controller="controller.main">
+<div id="leftcontainer" class="left-half shadow">
+           <nav id="navigation" class="main-menu">
+            <ul>
+			  <li >
+                   
+				   <i><img src="assets/OTIS.png" height="20" width="auto" alt="image"></i>
+                        <span class="nav-text">
+                         
+                        </span>
+                   
+                  
+                </li>
+			<li style="height:25px;"></li>
+                <li class="has-subnav">
+                    <a onclick="showDashboard('User Access')" >
+					<i class="fa fa-list fa-2x"><img src="assets/useraccess.png" height="32" width="auto" alt="image"></i>
+                        <span class="nav-text">
+                           User Access
+                        </span>
+                    </a>
+                  
+                </li>
+                <li class="has-subnav">
+                    <a onclick="showDashboard('Account Receivable')">
+					<i class="fa fa-list fa-2x"><img src="assets/AR.png" height="32" width="auto" alt="image"></i>
+                        <span class="nav-text">
+                           Account Receivable
+                        </span>
+                    </a>
+                    
+                </li>
+                <li class="has-subnav">
+                    <a   onclick="showDashboard('Revenue')">
+                       <i class="fa fa-list fa-2x"><img src="assets/revenue.png" height="32" width="auto" alt="image"></i>
+                        <span class="nav-text">
+                           Revenue
+                        </span>
+                    </a>
+                    
+                </li>
+                <li class="has-subnav">
+                    <a  onclick="showDashboard('Job Cost')">
+                       <i class="fa fa-list fa-2x"><img src="assets/JobCost.png" height="32" width="auto" alt="image"></i>
+                        <span class="nav-text">
+                           Job Cost
+                        </span>
+                    </a>
+                    
+                </li>
+				   <li  class="has-subnav">
+                   <a href="#">
+                         <i class="fa fa-power-off fa-2x"><img src="assets/Logout.png" height="32" width="auto" alt="image"></i>
+                        <span class="nav-text">
+                            Logout
+                        </span>
+                    </a>
+                </li>  
+            </ul>
 
-			<div id="leftcontainer" class="left-half shadow">
-
-				<md-toolbar class="md-menu-toolbar">
-					<div layout="row">
-						<div>
-							<md-menu-bar style="padding:0px">
-								<div class="otislogo">
-									<img src="assets/OTIS.png" height="20" width="auto" alt="image">
-								</div>
-								<div class="div-position-fixed">
-									<md-menu>
-										<md-menu-content style="min-width: 0px;">
-											<md-menu-item>
-												<md-tooltip class="custom-tooltip">User Access</md-tooltip>
-												<div style="text-align:center !important;" onclick="showDashboard('User Access')">
-													<img src="assets/useraccess.png" height="32" width="auto" alt="image">
-												</div>
-											</md-menu-item>
-											<md-menu-item>
-												<md-tooltip>Account Receivable</md-tooltip>
-												<div style="text-align:center !important;" onclick="showDashboard('Account Receivable')">
-													<img src="assets/AR.png" height="32" width="auto" alt="image">
-												</div>
-											</md-menu-item>
-											<md-menu-item>
-												<md-tooltip>Revenue</md-tooltip>
-												<div style="text-align:center !important" onclick="showDashboard('Revenue')">
-													<img src="assets/revenue.png" height="32" width="auto" alt="image">
-												</div>
-											</md-menu-item>
-										   <md-menu-item>
-											<md-tooltip>Job Cost</md-tooltip>
-											<div style="text-align:center !important" onclick="showDashboard('Job Cost')">
-												<img src="assets/JobCost.png" height="32" width="auto" alt="image">
-											</div>
-										</md-menu-item>
-										</md-menu-content>
-									</md-menu>
-								</div>
-								<div style="margin-bottom:180px"></div>
-
-								<div style="margin-left:8px" class="div-bottom-align">
-									<md-tooltip>Logout </md-tooltip>
-									<div style="text-align:center !important;margin-bottom: 30px;margin-top: 10px;">
-										<img src="assets/Logout.png" height="32" width="auto" alt="image">
-									</div>
-								</div>
-							</md-menu-bar>
-						</div>
-
-					</div>
-				</md-toolbar>
+            <ul class="logout">
+			<li >
+			 <a id="slidearrow" class="right-arrow"  onclick="slideInOut(this)" >
+                         <i class="fa fa-power-off fa-2x"></i>
+                        <span>
+                           
+                        </span>
+                    </a>
+			</li>
+             
+            </ul>
+        </nav>
+			
 			</div>
+
 			<div class="rightcontainer right-half">
 				<div style="width: 100%;display: block">
 

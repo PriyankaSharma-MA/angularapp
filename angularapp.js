@@ -1,6 +1,28 @@
-function changecss(id)
+function slideInOut(id)
 {
-alert(id);
+//alert(id.className);
+if(id.className=="right-arrow")
+{
+$("#slidearrow").removeClass('right-arrow');
+$("#slidearrow").addClass('left-arrow');
+
+$("#leftcontainer").removeClass('left-half');
+$("#leftcontainer").addClass('right-left-half');
+$("#navigation").addClass('rightnavigation'); 
+
+}else
+{
+$("#slidearrow").removeClass('left-arrow');
+$("#slidearrow").addClass('right-arrow');
+
+$("#leftcontainer").removeClass('right-left-half');
+$("#leftcontainer").addClass('left-half');
+$("#navigation").removeClass('rightnavigation'); 
+
+}
+
+
+
 }
 var SelectedArea="User Access";
 showDashboard(SelectedArea)
