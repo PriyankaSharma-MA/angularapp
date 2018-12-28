@@ -1,30 +1,5 @@
-function slideInOut(id)
-{
-//alert(id.className);
-if(id.className=="right-arrow")
-{
-$("#slidearrow").removeClass('right-arrow');
-$("#slidearrow").addClass('left-arrow');
-
-$("#leftcontainer").removeClass('left-half');
-$("#leftcontainer").addClass('right-left-half');
-$("#navigation").addClass('rightnavigation'); 
-
-}else
-{
-$("#slidearrow").removeClass('left-arrow');
-$("#slidearrow").addClass('right-arrow');
-
-$("#leftcontainer").removeClass('right-left-half');
-$("#leftcontainer").addClass('left-half');
-$("#navigation").removeClass('rightnavigation'); 
-
-}
-
-
-
-}
 var SelectedArea="User Access";
+ SelectedArea="local";
 showDashboard(SelectedArea)
 
 var prefix = window.location.pathname.substr(0, window.location.pathname.toLowerCase().lastIndexOf("/extensions") + 1);
@@ -143,8 +118,8 @@ function setCases ( reply, app ) {
    })
 
    };
-//var dataApp = qlik.openApp('Dashboards list.qvf', config);
-var dataApp = qlik.openApp('134b462d-3e70-4eb7-92c8-5e53467c8e8b', config);
+ var dataApp = qlik.openApp('Dashboards list.qvf', config);
+//var dataApp = qlik.openApp('134b462d-3e70-4eb7-92c8-5e53467c8e8b', config);
 dataApp.createCube( {
 	   "qInitialDataFetch": [
 		   {
@@ -170,6 +145,10 @@ dataApp.createCube( {
 		   },
 		    {
 			   "qDef": {"qFieldDefs": ["App ID"]}
+		   },
+		   
+		    {
+			   "qDef": {"qFieldDefs": ["Description"]}
 		   }
 		   
 	   ],
@@ -191,16 +170,49 @@ $scope.selectedIndex = 0;
 	$("#local").hide();
 	$("#"+ id).show();
   }
+  $scope.hideFilter = function(){  
 
+	  $('#filter').removeClass('btn-success');
+	$( "#filtercontainer" ).fadeOut();
+	}
+$scope.slideInOut = function(event){  
+
+//alert(event.target.className);
+if(event.target.className=="collapsexpand material-icons md-dark md-24 right-arrow")
+{
+$("#navigation").addClass('rightnavigation'); 
+$("#leftcontainer").addClass('right-left-half');
+$("#leftcontainer").removeClass('left-half');
+
+//$("#slidearrow").removeClass('right-arrow');
+$("#slidearrow").addClass('left-arrow');
+
+
+
+
+}else
+{
+
+$("#leftcontainer").addClass('left-half');
+
+$("#leftcontainer").removeClass('right-left-half');
+$("#slidearrow").removeClass('left-arrow');
+$("#slidearrow").addClass('right-arrow');
+
+$("#navigation").removeClass('rightnavigation'); 
+
+}
+
+
+
+}
 $scope.changecss = function(event){
  // alert(event.target.id);
    
-  $("#navContainer button").each( function(){
-    $(this).removeClass('btn-success');
-  });
-  $("#"+event.target.id).addClass("btn-success");
+  removecss();
+  $("#"+event.currentTarget.id).addClass("btn-success");
   
-  if(event.target.id !='dashboard' && event.target.id !='filter')
+  if(event.currentTarget.id !='dashboard' && event.currentTarget.id !='filter')
   {
   $( "#iconContainer" ).hide();
   $( "#summaryContainer" ).hide();
@@ -255,8 +267,8 @@ $( "#dashboardContainer" ).show();
  for(var i=0;i<dashboardData.dashboardName.length;i++){
   $scope.iterations = [];
   $scope.iterations.push(i)
-  //apparr.push(qlik.openApp(dashboardData.dashboardName[i] +".qvf", config));
-  apparr.push(qlik.openApp(dashboardData.appID[i], config));
+  apparr.push(qlik.openApp(dashboardData.dashboardName[i] +".qvf", config));
+ // apparr.push(qlik.openApp(dashboardData.appID[i], config));
 	//strdiv=strdiv+"<ul><li>"
 	strdiv=strdiv+"<div class='dashboardsummary' onClick=showDashboard('" + dashboardData.links[i] + "')><div class='dashboardsummaryHeader'  >"+ dashboardData.dashboard[i] +"</div>";
 	strdiv=strdiv+"<div  class='qvobject' id='qv" + i + "'></div></div>";

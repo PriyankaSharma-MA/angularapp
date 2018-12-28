@@ -2,6 +2,34 @@ function clickdashboarddiv(id)
 {
 alert(id)
 }
+function slideInOut(id)
+{
+//alert(id.className);
+if(id.className=="right-arrow")
+{
+$("#navigation").addClass('rightnavigation'); 
+$("#leftcontainer").addClass('right-left-half');
+$("#leftcontainer").removeClass('left-half');
+
+$("#slidearrow").removeClass('right-arrow');
+$("#slidearrow").addClass('left-arrow');
+
+}else
+{
+
+$("#leftcontainer").addClass('left-half');
+
+$("#leftcontainer").removeClass('right-left-half');
+$("#slidearrow").removeClass('left-arrow');
+$("#slidearrow").addClass('right-arrow');
+
+$("#navigation").removeClass('rightnavigation'); 
+
+}
+
+
+
+}
 
 function hide()
 {
@@ -27,37 +55,58 @@ function hideFilter()
 	function removecss ()
 	{
 	 $("#navContainer button").each( function(){
-    $(this).removeClass('btn-success');
+     $(this).removeClass('btn-success');
+    });
+	
+ $( ".selectedmenuitem" ).each(function() {
+  $( this ).removeClass("selectedmenuitem");
 });
+ 
+ $("#navigation img").each( function(){
+
+ $(this)[0].src=$(this)[0].currentSrc.replace("_dark","");
+    });
 	}
-function showDashboard(id)
+
+function showDashboard(event)
 {
 
 var url='';
-   hide();		   
-  $( "#reportContainer" ).show();
+   hide();
 
-if(id=='User Access')
+   $( "#reportContainer" ).show(); 
+   if(event!="local")
 {
-removecss();
-  SelectedArea=id;
+ removecss();
+ event.classList.add("selectedmenuitem");
+ }
+if(event=="local")
+{
+SelectedArea="User Access"
+ url="http://localhost:4848/extensions/helpdesk-angular/helpdesk-angular.html";
+}else 
+if(event.id=='useraccess')
+{
+ event.children[0].children[0].children[0].src="assets/mat_access_dark.png";
+ SelectedArea="User Access";
 url="https://35.192.113.251/sense/app/7fbbc750-5863-43d9-8662-223b3109dccb/sheet/1ff88551-9c4d-41e0-b790-37f4c11d3df8/state/analysis"
-}else if(id=="Account Receivable")
-{removecss();
-  SelectedArea=id;
+}else if(event.id=="accountreceivable")
+{
+ event.children[0].children[0].children[0].src="assets/mat_ar_dark.png";
+  SelectedArea="Account Receivable";
 url="https://35.192.113.251/sense/app/9cd93190-efaf-4ac2-804d-6be28106f17a/sheet/PfKsJK/state/analysis"
-}else if(id=="Job Cost")
-{removecss();
-  SelectedArea=id;
-url="https://35.192.113.251/sense/app/1341e738-2cc5-40ad-940e-7349ff06b03e/sheet/XuWLHFK/state/analysis"
-}else if(id=="Revenue")
-{removecss();
-  SelectedArea=id;
-url="https://35.192.113.251/sense/app/7fbbc750-5863-43d9-8662-223b3109dccb/sheet/1ff88551-9c4d-41e0-b790-37f4c11d3df8/state/analysis"
-}else
+}else if(event.id=="jobcost")
 {
-  url=id;
+  SelectedArea="Job Cost";
+  event.children[0].children[0].children[0].src="assets/mat_jobcost_dark.png"; 
+url="https://35.192.113.251/sense/app/1341e738-2cc5-40ad-940e-7349ff06b03e/sheet/XuWLHFK/state/analysis"
+}else if(event.id=="revenue")
+{
+  event.children[0].children[0].children[0].src="assets/mat_revenue_dark.png";  
+  SelectedArea="Revenue";
+url="https://35.192.113.251/sense/app/7fbbc750-5863-43d9-8662-223b3109dccb/sheet/1ff88551-9c4d-41e0-b790-37f4c11d3df8/state/analysis"
 }
+
   //alert(url)
 		// var url='https://35.192.113.251/sense/app/9cd93190-efaf-4ac2-804d-6be28106f17a/sheet/PfKsJK/state/analysis'
  document.getElementById("reportContainer").innerHTML= '<iframe style="width:100%;height:100%;" frameborder="0" src="' + url + '" />';
