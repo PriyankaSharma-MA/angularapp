@@ -119,13 +119,13 @@ section, footer, header, aside, nav{
 			color: white;
 			font-size: 12px;
 			font-weight: 500 !important;
-			    font-family: Roboto,"Helvetica Neue",sans-serif !important;
+		    font-family: Roboto,"Helvetica Neue",sans-serif !important;
 			
-			    line-height: 0px !important;
-    width: 69px !important;
-    min-height: 30px !important;
-    text-align: center;
-    margin-left: 0px !important;
+			line-height: 0px !important;
+            width: 69px !important;
+            min-height: 30px !important;
+            text-align: center;
+            margin-left: 0px !important;
 		}
 
 		.dropdown-content {
@@ -249,18 +249,23 @@ border:none;
 box-shadow:0 .5rem 1rem rgba(0,0,0,.15)!important
 }
 .qvobject{
-background-color:rgb(255,255,255);
-height: 120px; 
-width: 180px;
-
-margin-top:10px;
-margin-right:5px;
+      background-color: rgb(250, 250, 250);
+    /* height: 120px; */
+    height: 85px;
+    width: 180px;
+    padding: 10px !important;
+    /* padding: 5px; */
+    font-size: 11px;
+    color: rgb(151, 144, 144)!important;
+    line-height: 18px;
+    /* white-space: normal; */
+    overflow: hidden;
 
 }
 .dashboardsummary{
     background-color: rgb(255,255,255);
     display: inline-block;
-    
+    border: .5px solid #959595;
     margin-top: 10px;
     margin-right: 10px;
     margin-left: 1px;
@@ -269,14 +274,18 @@ margin-right:5px;
    	box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12);
 }
 .dashboardsummaryHeader{
-
-    border-bottom: 1px solid rgba(0,0,0,.2);
+        border-bottom: 1px solid rgba(0,0,0,.2);
     display: flex;
-    font-weight: 400;
+    font-weight: bold;
     font-family: robot;
-    color: #595959;
-	padding: 3px;
-    background-color: rgb(250, 250, 250);
+    color: #737373;
+    /* padding-top: 6px; */
+    background-color: white;
+    height: 50px;
+    font-size: 15px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 10px;
 
 }
 #container {
@@ -305,9 +314,9 @@ line-height:22px
     background-color: #ffffff;
     color: #222222;
 	border-radius:3px;
-	width:40%;
+	width:35%;
 	display:none;
-	z-index: 1;
+	z-index: 2;
 	box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12);
 }
 .md-tab{
@@ -358,10 +367,10 @@ width :33%
 .actionfilterdiv {
     justify-content: center;
     display: flex;
-	width:85%;
+	/*width:85%;*/
 }
 .actionfilterdiv div{
-    margin-right: 5px;
+    /*margin-right: 5px;*/
 }
 #local .actionfilterdiv div{
     margin-right: 0px !important;
@@ -392,6 +401,7 @@ margin-left: 32px;
 }
 .bottomdiv{
     margin-top: 25px;
+	justify-content:center;
 
 }
 #dashboardContainer{
@@ -431,9 +441,9 @@ display:block;
 display:flex;
     border-bottom: 1px solid #d3d3d3;
 }
-a.md-button.md-default-theme:not([disabled]):hover, a.md-button:not([disabled]):hover, .md-button.md-default-theme:not([disabled]):hover, .md-button:not([disabled]):hover{
+/*a.md-button.md-default-theme:not([disabled]):hover, a.md-button:not([disabled]):hover, .md-button.md-default-theme:not([disabled]):hover, .md-button:not([disabled]):hover{
     background-color: rgb(236, 236, 236);
-}
+}*/
 span {
     font-size: 12px;
     vertical-align: super;
@@ -619,8 +629,8 @@ background-color: #00a65a !important;
 border-color: #008d4c !important;
 }*/
 .btn-success {
-    background-color: #75b8f1 !important;
-    border-color: #75b8f1 !important;
+    background-color: #ecf1fa !important;
+    border-color: #ecf1fa !important;
 }
 
 
@@ -690,17 +700,6 @@ transition: transform 150ms ease;
 
 .material-icons.color_green { color: #00FF00; }
 
-.cancel{
-    background-color: white;
-    color: #3367d6;
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12);
-}
-.cancel :hover{
-    background-color: white;
-    color: #3367d6;
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12);
-
-}
  .has-subnav img{
 height:26px;
 width:26px;
@@ -708,3 +707,42 @@ width:26px;
 .md-button.dropdown :hover{
  background-color: #5b9bd5 !important;
 }
+
+
+
+.cancel{
+    background-color: white !important;
+    color: #3367d6 !important;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12);
+}
+.md-button .cancel :hover{
+    background-color: white !important;
+    color: #3367d6 !important;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12);
+
+}
+.cancel:not([disabled]):hover {
+  background-color:red
+}
+#inprogressContainer{
+    text-align: left;
+    margin: 35px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.blur   {   
+
+    position: fixed;
+    /* display: none; */
+    /* width: 100%; */
+    /* height: 100%; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+	}
+	#leftcontainer{
+	z-index:1;
+	}

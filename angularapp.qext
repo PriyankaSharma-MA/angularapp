@@ -1,6 +1,6 @@
 {
 	"type": "mashup",
-	"name": "Using AngularJS in mashups",
+	"name": "MashupDesign_02012019",
 	"description": "Basic responsive mashup template",
 	"version": "1.7",
 	"author": "qlik",
@@ -11,5 +11,6 @@
 	"dependencies": {
 		"qlik-sense": ">=3.0.x"
 	},
-	  "preview": "OTIS.jpg"
+	"preview": "OTIS.jpg",
+	"src": "/extensions/angularapp/OTIS.jpg"
 }

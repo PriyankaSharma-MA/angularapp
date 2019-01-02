@@ -37,7 +37,7 @@ $( "#dashboardContainer" ).hide();
 $( "#iconContainer" ).hide();
 $( "#summaryContainer" ).hide();
 $( "#reportContainer" ).hide();
-
+$( "#filtercontainer" ).fadeOut();
 }
 function summaryShow()
 {
@@ -51,23 +51,27 @@ function hideFilter()
 	{
 	  $('#filter').removeClass('btn-success');
 	$( "#filtercontainer" ).fadeOut();
+	 $("divblur").removeClass('blur');
 	}
-	function removecss ()
+	function removetopnavigation ()
 	{
 	 $("#navContainer button").each( function(){
      $(this).removeClass('btn-success');
     });
 	
- $( ".selectedmenuitem" ).each(function() {
-  $( this ).removeClass("selectedmenuitem");
-});
- 
- $("#navigation img").each( function(){
 
- $(this)[0].src=$(this)[0].currentSrc.replace("_dark","");
-    });
 	}
-
+function removeLeftNavigation()
+{
+  $( ".selectedmenuitem" ).each(function() {
+    $( this ).removeClass("selectedmenuitem");
+  });
+   
+   $("#navigation img").each( function(){
+  
+   $(this)[0].src=$(this)[0].currentSrc.replace("_dark","");
+      });
+}
 function showDashboard(event)
 {
 
@@ -77,13 +81,14 @@ var url='';
    $( "#reportContainer" ).show(); 
    if(event!="local")
 {
- removecss();
+ removetopnavigation();
+ removeLeftNavigation();
  event.classList.add("selectedmenuitem");
  }
 if(event=="local")
 {
 SelectedArea="User Access"
- url="http://localhost:4848/extensions/helpdesk-angular/helpdesk-angular.html";
+ url="https://35.192.113.251/sense/app/7fbbc750-5863-43d9-8662-223b3109dccb/sheet/1ff88551-9c4d-41e0-b790-37f4c11d3df8/state/analysis";
 }else 
 if(event.id=='useraccess')
 {

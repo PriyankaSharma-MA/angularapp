@@ -1,6 +1,15 @@
-var SelectedArea="User Access";
+var SelectedArea="useraccess";
+var filterarray=[];
+var newfilterarray=[];
+var filterdataApp;
+var filterDatarows=[]
+var filterData = {
+headers: [],
+rows: filterDatarows
+};
+
  SelectedArea="local";
-showDashboard(SelectedArea)
+ showDashboard(SelectedArea)
 
 var prefix = window.location.pathname.substr(0, window.location.pathname.toLowerCase().lastIndexOf("/extensions") + 1);
 
@@ -97,8 +106,12 @@ var data = {
 headers: [],
 rows: []
 };
+var filterdata = {
+headers: [],
+rows: []
+};
 
-
+var myField=[];
 function setCases ( reply, app ) {
  
 //alert('setCases')
@@ -118,8 +131,33 @@ function setCases ( reply, app ) {
    })
 
    };
- var dataApp = qlik.openApp('Dashboards list.qvf', config);
-//var dataApp = qlik.openApp('134b462d-3e70-4eb7-92c8-5e53467c8e8b', config);
+   
+   function setFilterData ( reply, app ) {
+ 
+   filterdata.headers.length = 0;
+   filterdata.rows.length = 0;
+   //set headers
+   reply.qHyperCube.qDimensionInfo.forEach( function ( dim ) {
+	   filterdata.headers.push( dim.qFallbackTitle );
+   } );
+   reply.qHyperCube.qMeasureInfo.forEach( function ( mea ) {
+	   filterdata.headers.push( mea.qFallbackTitle );
+   } );
+   reply.qHyperCube.qDataPages.forEach( function ( page ) {
+	   filterdata.qMatrix.forEach( function ( row ) {
+		   data.rows.push( row );
+	   } );
+   })
+
+   };
+ var dataApp = qlik.openApp('a2302b85-1df0-4563-93c8-0e67f5d642dc', config);
+
+  filterdataApp = qlik.openApp('c406337c-9f60-4afe-8fd6-1aaf66ca653b', config);
+
+ //var dataApp = qlik.openApp('Dashboards list.qvf', config);
+
+ // filterdataApp = qlik.openApp('DashboardFilter.qvf', config);
+ 
 dataApp.createCube( {
 	   "qInitialDataFetch": [
 		   {
@@ -157,23 +195,75 @@ dataApp.createCube( {
 	   "qSuppressMissing": false,
 	   "qMode": "S"
    }, setCases );
-// create controller for handling button clicks etc.
+ filterdataApp.getList("FieldList", function(reply){
+ 	$.each(reply.qFieldList.qItems, function(key, value) {
+
+ 		filterarray.push({qFieldDefs:value.qName});
+	})
+	
+	for(var i=0;i<filterarray.length;i++)
+	{
+ 	newfilterarray.push({qDef : filterarray[i]});
+ 	}
+	
+	for(var i=0;i<filterarray.length;i++)
+{
+ myField.push (filterdataApp.field(filterarray[i].qFieldDefs).getData());
+}
+var headercount=0;
+var singlefield;
+myField.forEach(function(singlefield){
+	singlefield.OnData.bind( function(level){
+			singlefield.rows.filter(x=>x.qText!=undefined).forEach(function(row,key){
+			
+			var count=singlefield.rows.filter(x=>x.qText!=undefined).length
+			if(key==0)
+			{
+			  filterDatarows=[];
+             filterData.headers.push([{"value":headercount, "text":row.field.fldname}])
+			 headercount=headercount+1;
+			}
+			filterDatarows.push([{"value":key+1, "text":row.qText}]) 
+			if(key+1==count)
+			{
+			if(filterDatarows.length!=0)
+			 {
+			 filterData.rows.push(filterDatarows)
+			 }
+			
+			}
+		
+		}
+		
+		)
+		;})});
+
+		
+	
+	});
 
 
-//material.controller('controller.main', function ($scope) {
-
+ 
+ 
 material.controller( "controller.main", ['$scope', function ( $scope ) {
 $scope.selectedIndex = 0;
  $scope.filterTab = function(id) {
    // alert('one selected');
+     $scope.iterations = [];
+	 $scope.filterheader = [];
+	 $scope.filterrow = [];
+	 $scope.filterheader=filterData.headers;
+	 $scope.filterrow=filterData.rows;
+
     $("#global").hide();
 	$("#local").hide();
 	$("#"+ id).show();
   }
   $scope.hideFilter = function(){  
 
-	  $('#filter').removeClass('btn-success');
+    $('#filter').removeClass('btn-success');
 	$( "#filtercontainer" ).fadeOut();
+	$( "#divblur" ).removeClass("blur");
 	}
 $scope.slideInOut = function(event){  
 
@@ -206,10 +296,16 @@ $("#navigation").removeClass('rightnavigation');
 
 
 }
+$scope.showinprogressContainer = function(event){ 
+$scope.changecss(event);
+ $( "#inprogressContainer" ).show();
+
+}
 $scope.changecss = function(event){
  // alert(event.target.id);
    
-  removecss();
+  removetopnavigation();
+  $( "#inprogressContainer" ).hide();
   $("#"+event.currentTarget.id).addClass("btn-success");
   
   if(event.currentTarget.id !='dashboard' && event.currentTarget.id !='filter')
@@ -226,10 +322,8 @@ $scope.changecss = function(event){
 $scope.showFilter = function(){
 $scope.selectedIndex = 0;
  $( "#filtercontainer" ).fadeIn()
- // $("#wrapper").css({'text-shadow': '0px 0px 10px #000'});
-
-	// $( "#filtercontainer" ).fadeIn()
-	}
+ $( "#divblur" ).addClass("blur") 
+}
 	
 $scope.displayChart = function(){
 var dashboardData={
@@ -239,6 +333,7 @@ dashboardName: [],
 dashboardObject: [],
 links:[],
 appID: [],
+description: []
 }
    for(var i=0;i< data.rows.length;i++)
    {
@@ -251,6 +346,7 @@ appID: [],
    dashboardData.dashboardObject.push( data.rows[i][3].qText);
    dashboardData.links.push( data.rows[i][4].qText);
    dashboardData.appID.push( data.rows[i][5].qText);
+   dashboardData.description.push( data.rows[i][6].qText);
    }
      }
 
@@ -262,26 +358,20 @@ var strdiv="<div id='container'>";
 //alert('displayChart')
 hide();
  $( "#filtercontainer" ).fadeOut()
-//document.getElementById('dashboard').addClass("btn-success");
+$( "#divblur" ).removeClass("blur");
 $( "#dashboardContainer" ).show();
  for(var i=0;i<dashboardData.dashboardName.length;i++){
   $scope.iterations = [];
   $scope.iterations.push(i)
   apparr.push(qlik.openApp(dashboardData.dashboardName[i] +".qvf", config));
- // apparr.push(qlik.openApp(dashboardData.appID[i], config));
-	//strdiv=strdiv+"<ul><li>"
+
 	strdiv=strdiv+"<div class='dashboardsummary' onClick=showDashboard('" + dashboardData.links[i] + "')><div class='dashboardsummaryHeader'  >"+ dashboardData.dashboard[i] +"</div>";
-	strdiv=strdiv+"<div  class='qvobject' id='qv" + i + "'></div></div>";
-	
-	//strdiv=strdiv+"</ul></li>"
+	strdiv=strdiv+"<div  class='qvobject' id='qv" + i + "'>"+dashboardData.description[i]+"</div></div>";
+
 }
 strdiv=strdiv+"</div>"
 document.getElementById('qlik').innerHTML =strdiv;
-for(var i=0;i<apparr.length;i++)
-{
-app=apparr[i];
-app.getObject( 'qv'+i, dashboardData.dashboardObject[i] );
-}
+
 };
 
 console.log('controller loaded');
