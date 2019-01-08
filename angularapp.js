@@ -1,4 +1,6 @@
 var SelectedArea="useraccess";
+var selectedAppId="7fbbc750-5863-43d9-8662-223b3109dccb";
+ selectedAppId="OTIS Demo Dashboard.qvf"; 
 var filterarray=[];
 var newfilterarray=[];
 var filterdataApp;
@@ -154,7 +156,7 @@ function setCases ( reply, app ) {
 
   filterdataApp = qlik.openApp('c406337c-9f60-4afe-8fd6-1aaf66ca653b', config);
 
- //var dataApp = qlik.openApp('Dashboards list.qvf', config);
+// var dataApp = qlik.openApp('Dashboards list.qvf', config);
 
  // filterdataApp = qlik.openApp('DashboardFilter.qvf', config);
  
@@ -195,7 +197,7 @@ dataApp.createCube( {
 	   "qSuppressMissing": false,
 	   "qMode": "S"
    }, setCases );
- filterdataApp.getList("FieldList", function(reply){
+    filterdataApp.getList("FieldList", function(reply){
  	$.each(reply.qFieldList.qItems, function(key, value) {
 
  		filterarray.push({qFieldDefs:value.qName});
@@ -231,25 +233,19 @@ myField.forEach(function(singlefield){
 			 filterData.rows.push(filterDatarows)
 			 }
 			
-			}
-		
+			}		
 		}
 		
 		)
-		;})});
-
-		
+		;})});		
 	
 	});
-
-
  
  
 material.controller( "controller.main", ['$scope', function ( $scope ) {
-$scope.selectedIndex = 0;
+
  $scope.filterTab = function(id) {
-   // alert('one selected');
-     $scope.iterations = [];
+   
 	 $scope.filterheader = [];
 	 $scope.filterrow = [];
 	 $scope.filterheader=filterData.headers;
@@ -267,33 +263,22 @@ $scope.selectedIndex = 0;
 	}
 $scope.slideInOut = function(event){  
 
-//alert(event.target.className);
 if(event.target.className=="collapsexpand material-icons md-dark md-24 right-arrow")
 {
 $("#navigation").addClass('rightnavigation'); 
 $("#leftcontainer").addClass('right-left-half');
 $("#leftcontainer").removeClass('left-half');
-
-//$("#slidearrow").removeClass('right-arrow');
 $("#slidearrow").addClass('left-arrow');
-
-
-
 
 }else
 {
 
 $("#leftcontainer").addClass('left-half');
-
 $("#leftcontainer").removeClass('right-left-half');
 $("#slidearrow").removeClass('left-arrow');
 $("#slidearrow").addClass('right-arrow');
-
-$("#navigation").removeClass('rightnavigation'); 
-
+$("#navigation").removeClass('rightnavigation');
 }
-
-
 
 }
 $scope.showinprogressContainer = function(event){ 
@@ -302,9 +287,13 @@ $scope.changecss(event);
 
 }
 $scope.changecss = function(event){
- // alert(event.target.id);
-   
-  removetopnavigation();
+ 
+if(document.getElementsByClassName('btn-success').length !=0  && event.currentTarget.id =='filter' && document.getElementsByClassName('btn-success')[0].id =='dashboard')
+  
+  {}else
+  {
+   removetopnavigation();
+  }
   $( "#inprogressContainer" ).hide();
   $("#"+event.currentTarget.id).addClass("btn-success");
   
@@ -318,9 +307,18 @@ $scope.changecss = function(event){
   }
 	}
 
-
 $scope.showFilter = function(){
-$scope.selectedIndex = 0;
+ //alert(selectedAppId);
+ //filterdataApp = qlik.openApp(selectedAppId, config);
+ if(document.getElementById('reportContainer').style.display=="block")
+ {
+  $scope.isDisabled=false;
+ }else
+ {
+  $scope.isDisabled=true;
+ }
+ $scope.selectedIndex = 0;
+ 
  $( "#filtercontainer" ).fadeIn()
  $( "#divblur" ).addClass("blur") 
 }
@@ -348,24 +346,22 @@ description: []
    dashboardData.appID.push( data.rows[i][5].qText);
    dashboardData.description.push( data.rows[i][6].qText);
    }
-     }
+  }
 
 	
 	 
 var app;
 var apparr=[]
 var strdiv="<div id='container'>";
-//alert('displayChart')
 hide();
  $( "#filtercontainer" ).fadeOut()
 $( "#divblur" ).removeClass("blur");
 $( "#dashboardContainer" ).show();
  for(var i=0;i<dashboardData.dashboardName.length;i++){
-  $scope.iterations = [];
-  $scope.iterations.push(i)
-  apparr.push(qlik.openApp(dashboardData.dashboardName[i] +".qvf", config));
 
-	strdiv=strdiv+"<div class='dashboardsummary' onClick=showDashboard('" + dashboardData.links[i] + "')><div class='dashboardsummaryHeader'  >"+ dashboardData.dashboard[i] +"</div>";
+    apparr.push(qlik.openApp(dashboardData.dashboardName[i] +".qvf", config));
+	strdiv=strdiv+"<div class='dashboardsummary' onClick=showDashboard('" + dashboardData.links[i] + "','" + dashboardData.appID[i] + "')><div class='dashboardsummaryHeader'  >"+ dashboardData.dashboard[i] +"</div>";
+	//strdiv=strdiv+"<div class='dashboardsummary' onClick=showDashboard('" + dashboardData.links[i] + "','" + dashboardData.dashboardName[i].replace(/ /g, '_') +".qvf" +  "')><div class='dashboardsummaryHeader'  >"+ dashboardData.dashboard[i] +"</div>";
 	strdiv=strdiv+"<div  class='qvobject' id='qv" + i + "'>"+dashboardData.description[i]+"</div></div>";
 
 }
@@ -375,7 +371,6 @@ document.getElementById('qlik').innerHTML =strdiv;
 };
 
 console.log('controller loaded');
-
 
 }]);
 

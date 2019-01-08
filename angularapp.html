@@ -22,11 +22,11 @@
 
 	<script src="../../resources/assets/external/requirejs/require.js"></script>
 	<!-- Bootstrap core CSS -->
-		
+
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
 
-    <link href="style.css" rel="stylesheet" />
-	
+	<link href="style.css" rel="stylesheet" />
+
 	<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.1/angular-animate.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
@@ -38,7 +38,7 @@
 
 
 
-		
+
 
 </head>
 
@@ -47,118 +47,130 @@
 <body>
 	<section class="mainsection">
 		<div id="material" ng-controller="controller.main">
-		<div id="divblur">
-		
-		</div>
-       <div id="leftcontainer" class="left-half shadow">
-           <nav id="navigation" class="main-menu">
-		   <ul style="border-bottom: 1px solid #d3d3d3;height:37px;">		   
-		     <li  class="logoli">                   
-				   <i><img src="assets/OTIS.png" height="20" width="auto" alt="image"></i>
-                        <span class="nav-text">                         
-                        </span>                
-                   </li>
-		   </ul>
-            <ul style="height:400px;">
-			
-			<li style="height:15px;"></li>
-                <li id="useraccess" onclick="showDashboard(this)"  class="has-subnav selectedmenuitem">
-                    <a  >
-					<i class="fa fa-list fa-2x"><img src="assets/mat_access_dark.png" alt="image"></i>
-                        <span class="nav-text">
-                           User Access
-                        </span>
-                    </a>
-                  
-                </li>
-				<li class="blankli">
-				</li>
-				
-                <li id="accountreceivable" onclick="showDashboard(this)" class="has-subnav">
-                    <a >
-					<i class="fa fa-list fa-2x"><img src="assets/mat_ar.png" alt="image"></i>
-                        <span class="nav-text">
-                           Account Receivable
-                        </span>
-                    </a>
-                    
-                </li>
-				<li class="blankli">
-				</li>
-                <li id="revenue"  onclick="showDashboard(this)" class="has-subnav">
-                    <a  >
-                       <i class="fa fa-list fa-2x"><img src="assets/mat_revenue.png"  alt="image"></i>
-                        <span class="nav-text">
-                           Revenue
-                        </span>
-                    </a>
-                    
-                </li>
-				<li class="blankli">
-				</li>
-                <li id="jobcost"  onclick="showDashboard(this)" class="has-subnav">
-                    <a >
-                       <i class="fa fa-list fa-2x"><img src="assets/mat_jobcost.png"  alt="image"></i>
-                        <span class="nav-text">
-                           Job Cost
-                        </span>
-                    </a>
-                    
-                </li>
-				              </ul>
+			<div id="divblur">
 
-            <ul class="logout">
-			 <li class="has-subnav">
-                   <a href="#">
-                         <i class="fa fa-power-off fa-2x"><img src="assets/Logout.png"  alt="image"></i>
-                        <span class="nav-text">
-                            Logout
-                        </span>
-                    </a>
-                </li>  
-				<li class="blankli">
-				</li>
-			<li  style="margin-left:10px !important;top: 45px;" >
-			 <a  >
-                        <i  ng-click="slideInOut($event)" id="slidearrow" class="collapsexpand material-icons md-dark md-24 right-arrow">
-                      keyboard_capslock
-                            </i>
-                        <span>
-                           
-                        </span>
-                    </a>
-			</li>
-             
-            </ul>
-        </nav>
-			
-			 </div>
+			</div>
+			<div id="leftcontainer" class="left-half shadow">
+				<nav id="navigation" class="main-menu">
+					<ul style="border-bottom: 1px solid #d3d3d3;height:37px;">
+						<li class="logoli">
+							<i>
+								<img src="assets/OTIS.png" height="20" width="auto" alt="image">
+							</i>
+							<span class="nav-text">
+							</span>
+						</li>
+					</ul>
+					<ul style="height:400px;">
+
+						<li style="height:15px;"></li>
+						<li id="useraccess" onclick="showDashboard(this)" class="has-subnav selectedmenuitem">
+							<a>
+								<i class="fa fa-list fa-2x">
+									<img src="assets/mat_access_dark.png" alt="image">
+								</i>
+								<span class="nav-text">
+									User Access
+								</span>
+							</a>
+
+						</li>
+						<li class="blankli">
+						</li>
+
+						<li id="accountreceivable" onclick="showDashboard(this)" class="has-subnav">
+							<a>
+								<i class="fa fa-list fa-2x">
+									<img src="assets/mat_ar.png" alt="image">
+								</i>
+								<span class="nav-text">
+									Account Receivable
+								</span>
+							</a>
+
+						</li>
+						<li class="blankli">
+						</li>
+						<li id="revenue" onclick="showDashboard(this)" class="has-subnav">
+							<a>
+								<i class="fa fa-list fa-2x">
+									<img src="assets/mat_revenue.png" alt="image">
+								</i>
+								<span class="nav-text">
+									Revenue
+								</span>
+							</a>
+
+						</li>
+						<li class="blankli">
+						</li>
+						<li id="jobcost" onclick="showDashboard(this)" class="has-subnav">
+							<a>
+								<i class="fa fa-list fa-2x">
+									<img src="assets/mat_jobcost.png" alt="image">
+								</i>
+								<span class="nav-text">
+									Job Cost
+								</span>
+							</a>
+
+						</li>
+					</ul>
+
+					<ul class="logout">
+						<li class="has-subnav">
+							<a href="#">
+								<i class="fa fa-power-off fa-2x">
+									<img src="assets/Logout.png" alt="image">
+								</i>
+								<span class="nav-text">
+									Logout
+								</span>
+							</a>
+						</li>
+						<li class="blankli">
+						</li>
+						<li style="margin-left:10px !important;top: 45px;">
+							<a>
+								<i ng-click="slideInOut($event)" id="slidearrow" class="collapsexpand material-icons md-dark md-24 right-arrow">
+									keyboard_capslock
+								</i>
+								<span>
+
+								</span>
+							</a>
+						</li>
+
+					</ul>
+				</nav>
+
+			</div>
 
 			<div class="rightcontainer right-half">
 				<div style="width: 100%;display: block">
 
 					<div id="navContainer" class="nav">
-                        <md-button  id="dashboard" style="margin-left: 40px;" ng-click="changecss($event);displayChart()">
+						<md-button class="btn-success" id="dashboard" style="margin-left: 40px;" ng-click="changecss($event);displayChart()">
 							<img src="assets/dashboard.png" height="" width="auto" alt="image">
 							<span>Dashboard</span>
-							</md-button>
-							 <md-button  id="link" ng-click="showinprogressContainer($event);">
+						</md-button>
+						<md-button id="link" ng-click="showinprogressContainer($event);">
 							<img src="assets/link.png" height="32" width="auto" alt="image">
 							<span>Important Links</span>
-							</md-button>
-							 <md-button id="support"  ng-click="showinprogressContainer($event);">
+						</md-button>
+						<md-button id="support" ng-click="showinprogressContainer($event);">
 							<img src="assets/support.png" height="" width="auto" alt="image">
 							<span>Support</span>
-							</md-button>
-							 <md-button id="about"  ng-click="showinprogressContainer($event);">
+						</md-button>
+						<md-button id="about" ng-click="showinprogressContainer($event);">
 							<img src="assets/about.png" height="" width="auto" alt="image">
 							<span>About</span>
-							</md-button>
-							 <md-button id="filter"  ng-click="changecss($event);showFilter();">
+						</md-button>
+						<md-button id="filter" ng-click="changecss($event);showFilter();">
 							<img src="assets/filter.png" height="" width="auto" alt="image">
 							<span>Filter</span>
-							</md-button>
-		
+						</md-button>
+
 					</div>
 
 					<div id="iconContainer" class="row iconContainer">
@@ -240,7 +252,7 @@
 						</div>
 					</div>
 					<div id="dashboardContainer">
-					
+
 						<div id="qlik">
 
 							<!--Error Popup-->
@@ -271,125 +283,123 @@
 
 					</div>
 
-	<div id="inprogressContainer" style="display:none;">
-			In progress !!!
-			</div>
+					<div id="inprogressContainer" style="display:none;">
+						In progress !!!
+					</div>
 
 				</div>
 
 			</div>
 
 			<div id="filtercontainer" class="filtercontainer">
-			
+
 				<div ng-cloak>
 					<md-content>
-						<md-tabs md-dynamic-height md-border-bottom>
-							<md-tab  md-selected='selectedIndex'  label="Global" md-on-select="filterTab('global')">
+						<md-tabs md-selected='selectedIndex' md-dynamic-height md-border-bottom>
+							<md-tab label="Global" md-on-select="filterTab('global')">
 
 							</md-tab>
-							<md-tab md-selected='selectedIndex' md-on-select="filterTab('local')" label="Local">
+							<md-tab ng-disabled="isDisabled" md-on-select="filterTab('local')" label="Local">
 
 							</md-tab>
 						</md-tabs>
 					</md-content>
 				</div>
-	                  <div id="dynamicfilter">	
-		
-			
-			
-		
-	                <div id='global' class="demo-dialog-content matselectfontsize">
-					<div class="row filterdiv" layout-sm="column" layout-align="center center" layout-wrap>
-						<div>
+				<div id="dynamicfilter">
 
-							<md-input-container>
-								<label>Select Region</label>
-								<md-select ng-model="region">
-									<md-option value="1">1</md-option>
-									<md-option value="2">2</md-option>
-								</md-select>
-							</md-input-container>
 
-						</div>
-						<div>
-							<md-input-container>
-								<label>Select Sub Region
-								</label>
-								<md-select ng-model="subregion">
-									<md-option>
-										<em>None</em>
-									</md-option>
-									<md-option value="1">Project Team</md-option>
-
-								</md-select>
-							</md-input-container>
-						</div>
-						<div>
-							<md-input-container>
-								<label>Select Category
-								</label>
-								<md-select ng-model="category">
-									<md-option>
-										<em>None</em>
-									</md-option>
-								</md-select>
-							</md-input-container>
-						</div>
-
-					</div>
-					<div  class="row filterdiv" layout-sm="column" layout-align="center center" layout-wrap>
-
-						<div>
-
-							<md-input-container>
-								<label>Select Country
-								</label>
-								<md-select ng-model="country">
-									<md-option>
-										<em>None</em>
-									</md-option>
-
-								</md-select>
-							</md-input-container>
-						</div>			
-						
-
-					</div>
-			
-
-					<div class="row bottomdiv" layout="row" class="demo-dialog-button" layout-sm="column" layout-align="center center" layout-wrap>
-						<div class="actionfilterdiv" style="float:left">
+					<div id='global' class="demo-dialog-content matselectfontsize">
+						<div class="row filterdiv" layout-sm="column" layout-align="center center" layout-wrap>
 							<div>
-							<md-button id="link" class="dropdown cancel" >Clear</md-button>
-					
+
+								<md-input-container>
+									<label>Select Region</label>
+									<md-select ng-model="region">
+										<md-option value="1">1</md-option>
+										<md-option value="2">2</md-option>
+									</md-select>
+								</md-input-container>
+
 							</div>
 							<div>
-							<md-button id="link" class="dropdown cancel" ng-click="hideFilter();">Cancel</md-button>
-									</div>
-							<div>
-							<md-button id="link" class="dropdown savebutton" >Save</md-button>
-								</div>
-						</div>
-					
-					</div>
+								<md-input-container>
+									<label>Select Sub Region
+									</label>
+									<md-select ng-model="subregion">
+										<md-option>
+											<em>None</em>
+										</md-option>
+										<md-option value="1">Project Team</md-option>
 
-				</div>
+									</md-select>
+								</md-input-container>
+							</div>
+							<div>
+								<md-input-container>
+									<label>Select Category
+									</label>
+									<md-select ng-model="category">
+										<md-option>
+											<em>None</em>
+										</md-option>
+									</md-select>
+								</md-input-container>
+							</div>
+
+						</div>
+						<div class="row filterdiv" layout-sm="column" layout-align="center center" layout-wrap>
+
+							<div>
+
+								<md-input-container>
+									<label>Select Country
+									</label>
+									<md-select ng-model="country">
+										<md-option>
+											<em>None</em>
+										</md-option>
+
+									</md-select>
+								</md-input-container>
+							</div>
+
+
+						</div>
+
+
+						<div class="row bottomdiv" layout="row" class="demo-dialog-button" layout-sm="column" layout-align="center center" layout-wrap>
+							<div class="actionfilterdiv" style="float:left">
+								<div>
+									<md-button id="link" class="dropdown cancel">Clear</md-button>
+
+								</div>
+								<div>
+									<md-button id="link" class="dropdown cancel" ng-click="hideFilter();">Cancel</md-button>
+								</div>
+								<div>
+									<md-button id="link" class="dropdown savebutton">Save</md-button>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
 					<div id='local' style="display:none;padding-top:0px;" class="demo-dialog-content matselectfontsize">
 
-					<div  style="display: flex;" class="row" layout-sm="column" layout-align="center center" layout-wrap>
-	<div  style="width:33%;height:50px;"  ng-repeat="i in filterheader"  id="{{'qv' + i}}">			
-			<md-input-container>
-     <label>Select {{i[0].text}}</label>
-    <md-select ng-model="selectedImpact">
-      <md-option  ng-repeat="j in filterrow[i[0].value]" value="{{j[0].value}} ">
-      {{j[0].text}} 
-      </md-option>
-    </md-select>
-  </md-input-container>
-			
-			
-			</div> 
-						<!--<div>
+						<div style="display: flex;" class="row" layout-sm="column" layout-align="center center" layout-wrap>
+							<div style="width:33%;height:50px;" ng-repeat="i in filterheader" id="{{'qv' + i}}">
+								<md-input-container>
+									<label>Select {{i[0].text}}</label>
+									<md-select ng-model="selectedImpact">
+										<md-option ng-repeat="j in filterrow[i[0].value]" value="{{j[0].value}} ">
+											{{j[0].text}}
+										</md-option>
+									</md-select>
+								</md-input-container>
+
+
+							</div>
+							<!--<div>
 							<md-input-container>
 								<label>Select Area
 								</label>
@@ -677,20 +687,20 @@
 							</div>
 						</div>
 					</div>-->
-<div class="row bottomdiv" layout="row" class="demo-dialog-button" layout-sm="column" layout-align="center center" layout-wrap>
-						<div class="actionfilterdiv" style="float:left">
-							<div>
-							<md-button id="link" class="dropdown cancel" >Clear</md-button>
-					
-							</div>
-							<div>
-							<md-button id="link" class="dropdown cancel" ng-click="hideFilter();">Cancel</md-button>
+							<div class="row bottomdiv" layout="row" class="demo-dialog-button" layout-sm="column" layout-align="center center" layout-wrap>
+								<div class="actionfilterdiv" style="float:left">
+									<div>
+										<md-button id="link" class="dropdown cancel">Clear</md-button>
+
 									</div>
-							<div>
-							<md-button id="link" class="dropdown savebutton" >Save</md-button>
+									<div>
+										<md-button id="link" class="dropdown cancel" ng-click="hideFilter();">Cancel</md-button>
+									</div>
+									<div>
+										<md-button id="link" class="dropdown savebutton">Save</md-button>
+									</div>
 								</div>
-						</div>
-						<!--<div style="float:right">
+								<!--<div style="float:right">
 
 
 							<div style="font-size: 12px; font-family: Roboto,Helvetica Neue,sans-serif !important;">
@@ -699,15 +709,15 @@
 								</md-checkbox>
 							</div>
 						</div>-->
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-		
-		</div>
 
-		<!--    <script src="qliksense.js"></script>Add host to this link if the mashup is on an external webserver-->
-		<script src="qliksense.js"></script>
-		<script src="angularapp.js"></script>
+				</div>
+
+				<!--    <script src="qliksense.js"></script>Add host to this link if the mashup is on an external webserver-->
+				<script src="qliksense.js"></script>
+				<script src="angularapp.js"></script>
 	</section>
 
 </body>

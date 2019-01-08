@@ -1,16 +1,11 @@
-function clickdashboarddiv(id)
-{
-alert(id)
-}
+
 function slideInOut(id)
 {
-//alert(id.className);
 if(id.className=="right-arrow")
 {
 $("#navigation").addClass('rightnavigation'); 
 $("#leftcontainer").addClass('right-left-half');
 $("#leftcontainer").removeClass('left-half');
-
 $("#slidearrow").removeClass('right-arrow');
 $("#slidearrow").addClass('left-arrow');
 
@@ -18,16 +13,12 @@ $("#slidearrow").addClass('left-arrow');
 {
 
 $("#leftcontainer").addClass('left-half');
-
 $("#leftcontainer").removeClass('right-left-half');
 $("#slidearrow").removeClass('left-arrow');
 $("#slidearrow").addClass('right-arrow');
-
 $("#navigation").removeClass('rightnavigation'); 
 
 }
-
-
 
 }
 
@@ -50,8 +41,8 @@ $( "#dashboardContainer" ).hide();
 function hideFilter()
 	{
 	  $('#filter').removeClass('btn-success');
-	$( "#filtercontainer" ).fadeOut();
-	 $("divblur").removeClass('blur');
+	  $( "#filtercontainer" ).fadeOut();
+	  $("divblur").removeClass('blur');
 	}
 	function removetopnavigation ()
 	{
@@ -72,20 +63,31 @@ function removeLeftNavigation()
    $(this)[0].src=$(this)[0].currentSrc.replace("_dark","");
       });
 }
-function showDashboard(event)
+function showDashboard(event,appID)
 {
+//alert(appID)
+//alert(event.id)
+if(appID !=undefined)
+{
+selectedAppId=appID;
+}
 
 var url='';
-   hide();
+  hide();
 
    $( "#reportContainer" ).show(); 
    if(event!="local")
+   {
+    var scope = angular.element(document.getElementById('controller.main')).scope();
+   }
+   if(event!="local" && event.id!=undefined)
 {
  removetopnavigation();
  removeLeftNavigation();
  event.classList.add("selectedmenuitem");
  }
-if(event=="local")
+ 
+if(event=="local" )
 {
 SelectedArea="User Access"
  url="https://35.192.113.251/sense/app/7fbbc750-5863-43d9-8662-223b3109dccb/sheet/1ff88551-9c4d-41e0-b790-37f4c11d3df8/state/analysis";
