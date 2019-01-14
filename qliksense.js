@@ -47,6 +47,7 @@ function hideFilter()
 	function removetopnavigation ()
 	{
 	 $("#navContainer button").each( function(){
+	 $(this)[0].children[0].src=$(this)[0].children[0].src.replace("_dark.png",".png")
      $(this).removeClass('btn-success');
     });
 	

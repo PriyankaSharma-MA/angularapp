@@ -256,7 +256,7 @@ material.controller( "controller.main", ['$scope', function ( $scope ) {
 	$("#"+ id).show();
   }
   $scope.hideFilter = function(){  
-
+    $('#filter')[0].children[0].src=$('#filter')[0].children[0].src.replace("_dark.png",".png")
     $('#filter').removeClass('btn-success');
 	$( "#filtercontainer" ).fadeOut();
 	$( "#divblur" ).removeClass("blur");
@@ -292,13 +292,17 @@ if(document.getElementsByClassName('btn-success').length !=0  && event.currentTa
   
   {}else
   {
-   removetopnavigation();
+    removetopnavigation();
   }
+   var imgsrc= $("#"+event.currentTarget.id)[0].children[0].src
+ $("#"+event.currentTarget.id)[0].children[0].src=imgsrc.replace(".png","_dark.png")
+ 
   $( "#inprogressContainer" ).hide();
   $("#"+event.currentTarget.id).addClass("btn-success");
   
   if(event.currentTarget.id !='dashboard' && event.currentTarget.id !='filter')
   {
+
   $( "#iconContainer" ).hide();
   $( "#summaryContainer" ).hide();
   $( "#dashboardContainer" ).hide(); 
@@ -307,7 +311,8 @@ if(document.getElementsByClassName('btn-success').length !=0  && event.currentTa
   }
 	}
 
-$scope.showFilter = function(){
+$scope.showFilter = function(event){
+$scope.changecss(event);
  //alert(selectedAppId);
  //filterdataApp = qlik.openApp(selectedAppId, config);
  if(document.getElementById('reportContainer').style.display=="block")
@@ -315,7 +320,7 @@ $scope.showFilter = function(){
   $scope.isDisabled=false;
  }else
  {
-  $scope.isDisabled=true;
+  $scope.isDisabled=false;
  }
  $scope.selectedIndex = 0;
  
@@ -323,7 +328,8 @@ $scope.showFilter = function(){
  $( "#divblur" ).addClass("blur") 
 }
 	
-$scope.displayChart = function(){
+$scope.displayChart = function(event){
+$scope.changecss(event);
 var dashboardData={
 area:[],
 dashboard:[],
