@@ -1,6 +1,6 @@
 var SelectedArea="useraccess";
-var selectedAppId="7fbbc750-5863-43d9-8662-223b3109dccb";
- selectedAppId="OTIS Demo Dashboard.qvf"; 
+var selectedAppId="26158ab4-6a1b-4395-9335-420fbbb2a000";
+ //selectedAppId="OTIS Demo Dashboard.qvf"; 
 var filterarray=[];
 var newfilterarray=[];
 var filterdataApp;
@@ -152,9 +152,9 @@ function setCases ( reply, app ) {
    })
 
    };
- var dataApp = qlik.openApp('a2302b85-1df0-4563-93c8-0e67f5d642dc', config);
+ var dataApp = qlik.openApp('da1c7354-20dc-41c2-adfb-ff9f2ca66b9b', config);
 
-  filterdataApp = qlik.openApp('c406337c-9f60-4afe-8fd6-1aaf66ca653b', config);
+  filterdataApp = qlik.openApp('a91577da-b164-40f6-9b75-c92dfad8b9e7', config);
 
 // var dataApp = qlik.openApp('Dashboards list.qvf', config);
 

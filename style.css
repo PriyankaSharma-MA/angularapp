@@ -114,7 +114,7 @@ section, footer, header, aside, nav{
 		.dropdown {
 			position: relative;
 			display: inline-block;
-			background-color: #5b9bd5;
+			background-color: #5b9bd5 !important;
 			/* padding-top: 12px !important; */
 			cursor: pointer;
 			color: white;
@@ -678,6 +678,7 @@ color:#3367d6
     text-align: center;
     margin-top: 15px !important;
     margin-bottom: 0px !important;
+	padding-top:0px !important;
 	}
 	.material-icons.md-dark { 
 	color: #737373;

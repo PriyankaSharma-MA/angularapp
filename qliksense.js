@@ -68,15 +68,16 @@ function showDashboard(event,appID)
 {
 //alert(appID)
 //alert(event.id)
+var url='';
+  hide();
+    $( "#reportContainer" ).show(); 
 if(appID !=undefined)
 {
 selectedAppId=appID;
+url=event;
 }
 
-var url='';
-  hide();
-
-   $( "#reportContainer" ).show(); 
+ 
    if(event!="local")
    {
     var scope = angular.element(document.getElementById('controller.main')).scope();
@@ -91,7 +92,7 @@ var url='';
 if(event=="local" )
 {
 SelectedArea="User Access"
- url="https://35.192.113.251/sense/app/7fbbc750-5863-43d9-8662-223b3109dccb/sheet/1ff88551-9c4d-41e0-b790-37f4c11d3df8/state/analysis";
+ url="https://35.192.113.251/sense/app/26158ab4-6a1b-4395-9335-420fbbb2a000/sheet/PfKsJK/state/analysis";
 }else 
 if(event.id=='useraccess')
 {
@@ -102,17 +103,17 @@ url="https://35.192.113.251/sense/app/7fbbc750-5863-43d9-8662-223b3109dccb/sheet
 {
  event.children[0].children[0].children[0].src="assets/mat_ar_dark.png";
   SelectedArea="Account Receivable";
-url="https://35.192.113.251/sense/app/9cd93190-efaf-4ac2-804d-6be28106f17a/sheet/PfKsJK/state/analysis"
+url="https://35.192.113.251/sense/app/26158ab4-6a1b-4395-9335-420fbbb2a000/sheet/JsCeVm/state/analysis"
 }else if(event.id=="jobcost")
 {
   SelectedArea="Job Cost";
   event.children[0].children[0].children[0].src="assets/mat_jobcost_dark.png"; 
-url="https://35.192.113.251/sense/app/1341e738-2cc5-40ad-940e-7349ff06b03e/sheet/XuWLHFK/state/analysis"
+url="https://35.192.113.251/sense/app/26158ab4-6a1b-4395-9335-420fbbb2a000/sheet/PfKsJK/state/analysis"
 }else if(event.id=="revenue")
 {
   event.children[0].children[0].children[0].src="assets/mat_revenue_dark.png";  
   SelectedArea="Revenue";
-url="https://35.192.113.251/sense/app/7fbbc750-5863-43d9-8662-223b3109dccb/sheet/1ff88551-9c4d-41e0-b790-37f4c11d3df8/state/analysis"
+url="https://35.192.113.251/sense/app/26158ab4-6a1b-4395-9335-420fbbb2a000/sheet/JsCeVm/state/analysis"
 }
 
   //alert(url)
