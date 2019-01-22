@@ -66,6 +66,8 @@ function removeLeftNavigation()
 }
 function showDashboard(event,appID)
 {
+console.log( defaultLinkData.rows)
+
 //alert(appID)
 //alert(event.id)
 var url='';
@@ -115,7 +117,16 @@ url="https://35.192.113.251/sense/app/26158ab4-6a1b-4395-9335-420fbbb2a000/sheet
   SelectedArea="Revenue";
 url="https://35.192.113.251/sense/app/26158ab4-6a1b-4395-9335-420fbbb2a000/sheet/JsCeVm/state/analysis"
 }
-
+ for(var i=0;i< defaultLinkData.rows.length;i++)
+   {
+   if(defaultLinkData.rows[i][0].qText==SelectedArea)
+   {
+   url= defaultLinkData.rows[i][1].qText;
+  // alert(url);
+   break;
+  }
+  }
+  
   //alert(url)
 		// var url='https://35.192.113.251/sense/app/9cd93190-efaf-4ac2-804d-6be28106f17a/sheet/PfKsJK/state/analysis'
  document.getElementById("reportContainer").innerHTML= '<iframe style="width:100%;height:100%;" frameborder="0" src="' + url + '" />';

@@ -2,16 +2,20 @@ var SelectedArea="useraccess";
 var selectedAppId="26158ab4-6a1b-4395-9335-420fbbb2a000";
  //selectedAppId="OTIS Demo Dashboard.qvf"; 
 var filterarray=[];
-var newfilterarray=[];
 var filterdataApp;
+var defaultLinkdataApp;
 var filterDatarows=[]
 var filterData = {
 headers: [],
 rows: filterDatarows
 };
+var defaultLinkData = {
+headers: [],
+rows: []
+};
 
  SelectedArea="local";
- showDashboard(SelectedArea)
+
 
 var prefix = window.location.pathname.substr(0, window.location.pathname.toLowerCase().lastIndexOf("/extensions") + 1);
 
@@ -134,32 +138,59 @@ function setCases ( reply, app ) {
 
    };
    
-   function setFilterData ( reply, app ) {
+   function setdefaultLinkData ( reply, app ) {
  
-   filterdata.headers.length = 0;
-   filterdata.rows.length = 0;
+   defaultLinkData.headers.length = 0;
+   defaultLinkData.rows.length = 0;
    //set headers
    reply.qHyperCube.qDimensionInfo.forEach( function ( dim ) {
-	   filterdata.headers.push( dim.qFallbackTitle );
+	   defaultLinkData.headers.push( dim.qFallbackTitle );
    } );
    reply.qHyperCube.qMeasureInfo.forEach( function ( mea ) {
-	   filterdata.headers.push( mea.qFallbackTitle );
+	   defaultLinkData.headers.push( mea.qFallbackTitle );
    } );
    reply.qHyperCube.qDataPages.forEach( function ( page ) {
-	   filterdata.qMatrix.forEach( function ( row ) {
-		   data.rows.push( row );
+	   page.qMatrix.forEach( function ( row ) {
+		   defaultLinkData.rows.push( row );
 	   } );
+	   
    })
-
+ showDashboard(SelectedArea);
    };
  var dataApp = qlik.openApp('da1c7354-20dc-41c2-adfb-ff9f2ca66b9b', config);
 
   filterdataApp = qlik.openApp('a91577da-b164-40f6-9b75-c92dfad8b9e7', config);
-
-// var dataApp = qlik.openApp('Dashboards list.qvf', config);
-
- // filterdataApp = qlik.openApp('DashboardFilter.qvf', config);
  
+  defaultLinkdataApp = qlik.openApp('6272f3f4-370b-4491-8fe4-52132592f87b', config);
+
+ //var dataApp = qlik.openApp('Dashboards list.qvf', config);
+
+ //filterdataApp = qlik.openApp('DashboardFilter.qvf', config);
+ 
+ //defaultLinkdataApp = qlik.openApp('DefaultLink.qvf', config);
+ 
+ defaultLinkdataApp.createCube( {
+	   "qInitialDataFetch": [
+		   {
+			   "qHeight": 400,
+			   "qWidth": 8
+		   }
+	   ],
+	   "qDimensions": [
+		   {
+			   "qDef": {"qFieldDefs": ["Area"]}
+		   },
+
+		   {
+			   "qDef": {"qFieldDefs": ["Link"]}
+		   }
+		   
+	   ],
+	   "qMeasures": [],
+	   "qSuppressZero": false,
+	   "qSuppressMissing": false,
+	   "qMode": "S"
+   }, setdefaultLinkData );
 dataApp.createCube( {
 	   "qInitialDataFetch": [
 		   {
@@ -203,15 +234,11 @@ dataApp.createCube( {
  		filterarray.push({qFieldDefs:value.qName});
 	})
 	
-	for(var i=0;i<filterarray.length;i++)
-	{
- 	newfilterarray.push({qDef : filterarray[i]});
- 	}
 	
 	for(var i=0;i<filterarray.length;i++)
-{
- myField.push (filterdataApp.field(filterarray[i].qFieldDefs).getData());
-}
+   {
+      myField.push (filterdataApp.field(filterarray[i].qFieldDefs).getData());
+   }
 var headercount=0;
 var singlefield;
 myField.forEach(function(singlefield){
