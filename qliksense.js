@@ -75,7 +75,7 @@ var url='';
     $( "#reportContainer" ).show(); 
 if(appID !=undefined)
 {
-selectedAppId=appID;
+
 url=event;
 }
 
