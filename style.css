@@ -114,7 +114,7 @@ section, footer, header, aside, nav{
 		.dropdown {
 			position: relative;
 			display: inline-block;
-			background-color: #5b9bd5 !important;
+			background-color:#3d6ed8 !important;
 			/* padding-top: 12px !important; */
 			cursor: pointer;
 			color: white;
@@ -719,7 +719,7 @@ width:26px;
 
 .cancel{
     background-color: white !important;
-    color: #3367d6 !important;
+    color: #3d6ed8 !important;
     box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12);
 }
 .md-button .cancel :hover{

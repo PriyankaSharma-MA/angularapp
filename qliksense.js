@@ -26,14 +26,12 @@ function hide()
 {
 $( "#dashboardContainer" ).hide();
 $( "#iconContainer" ).hide();
-$( "#summaryContainer" ).hide();
 $( "#reportContainer" ).hide();
 $( "#filtercontainer" ).fadeOut();
 }
 function summaryShow()
 {
 $( "#iconContainer" ).show();
-$( "#summaryContainer" ).show();
 $( "#reportContainer" ).hide();
 $( "#dashboardContainer" ).hide();
 }
@@ -68,8 +66,6 @@ function showDashboard(event,appID)
 {
 console.log( defaultLinkData.rows)
 
-//alert(appID)
-//alert(event.id)
 var url='';
   hide();
     $( "#reportContainer" ).show(); 
@@ -94,41 +90,34 @@ url=event;
 if(event=="local" )
 {
 SelectedArea="User Access"
- url="https://35.192.113.251/sense/app/26158ab4-6a1b-4395-9335-420fbbb2a000/sheet/PfKsJK/state/analysis";
 }else 
 if(event.id=='useraccess')
 {
  event.children[0].children[0].children[0].src="assets/mat_access_dark.png";
  SelectedArea="User Access";
-url="https://35.192.113.251/sense/app/7fbbc750-5863-43d9-8662-223b3109dccb/sheet/1ff88551-9c4d-41e0-b790-37f4c11d3df8/state/analysis"
 }else if(event.id=="accountreceivable")
 {
  event.children[0].children[0].children[0].src="assets/mat_ar_dark.png";
   SelectedArea="Account Receivable";
-url="https://35.192.113.251/sense/app/26158ab4-6a1b-4395-9335-420fbbb2a000/sheet/JsCeVm/state/analysis"
 }else if(event.id=="jobcost")
 {
   SelectedArea="Job Cost";
   event.children[0].children[0].children[0].src="assets/mat_jobcost_dark.png"; 
-url="https://35.192.113.251/sense/app/26158ab4-6a1b-4395-9335-420fbbb2a000/sheet/PfKsJK/state/analysis"
 }else if(event.id=="revenue")
 {
   event.children[0].children[0].children[0].src="assets/mat_revenue_dark.png";  
   SelectedArea="Revenue";
-url="https://35.192.113.251/sense/app/26158ab4-6a1b-4395-9335-420fbbb2a000/sheet/JsCeVm/state/analysis"
 }
  for(var i=0;i< defaultLinkData.rows.length;i++)
    {
    if(defaultLinkData.rows[i][0].qText==SelectedArea)
    {
    url= defaultLinkData.rows[i][1].qText;
-  // alert(url);
+ 
    break;
   }
   }
   
-  //alert(url)
-		// var url='https://35.192.113.251/sense/app/9cd93190-efaf-4ac2-804d-6be28106f17a/sheet/PfKsJK/state/analysis'
  document.getElementById("reportContainer").innerHTML= '<iframe style="width:100%;height:100%;" frameborder="0" src="' + url + '" />';
 
 }

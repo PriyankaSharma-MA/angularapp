@@ -1,9 +1,4 @@
-
-
-
-
 var SelectedArea="useraccess";
-
 var filterarray=[];
 var filterdataApp;
 var defaultLinkdataApp;
@@ -123,7 +118,6 @@ rows: []
 var myField=[];
 function setCases ( reply, app ) {
  
-//alert('setCases')
    data.headers.length = 0;
    data.rows.length = 0;
    //set headers
@@ -166,12 +160,6 @@ function setCases ( reply, app ) {
  
   defaultLinkdataApp = qlik.openApp(DefaultLink, config);
 
- //var dataApp = qlik.openApp('Dashboards list.qvf', config);
-
- //filterdataApp = qlik.openApp('DashboardFilter.qvf', config);
- 
- //defaultLinkdataApp = qlik.openApp('DefaultLink.qvf', config);
- 
  defaultLinkdataApp.createCube( {
 	   "qInitialDataFetch": [
 		   {
@@ -334,7 +322,6 @@ if(document.getElementsByClassName('btn-success').length !=0  && event.currentTa
   {
 
   $( "#iconContainer" ).hide();
-  $( "#summaryContainer" ).hide();
   $( "#dashboardContainer" ).hide(); 
   $( "#reportContainer" ).hide();
   $( "#filtercontainer" ).hide();
@@ -343,8 +330,6 @@ if(document.getElementsByClassName('btn-success').length !=0  && event.currentTa
 
 $scope.showFilter = function(event){
 $scope.changecss(event);
- //alert(selectedAppId);
- //filterdataApp = qlik.openApp(selectedAppId, config);
  if(document.getElementById('reportContainer').style.display=="block")
  {
   $scope.isDisabled=false;
@@ -373,7 +358,6 @@ description: []
    {
    if(data.rows[i][0].qText==SelectedArea)
    {
-   //alert(SelectedArea)
    dashboardData.area.push( data.rows[i][0].qText);
    dashboardData.dashboard.push( data.rows[i][1].qText);
    dashboardData.dashboardName.push( data.rows[i][2].qText);
@@ -387,7 +371,6 @@ description: []
 	
 	 
 var app;
-var apparr=[]
 var strdiv="<div id='container'>";
 hide();
  $( "#filtercontainer" ).fadeOut()
@@ -395,9 +378,7 @@ $( "#divblur" ).removeClass("blur");
 $( "#dashboardContainer" ).show();
  for(var i=0;i<dashboardData.dashboardName.length;i++){
 
-    apparr.push(qlik.openApp(dashboardData.dashboardName[i] +".qvf", config));
 	strdiv=strdiv+"<div class='dashboardsummary' onClick=showDashboard('" + dashboardData.links[i] + "','" + dashboardData.appID[i] + "')><div class='dashboardsummaryHeader'  >"+ dashboardData.dashboard[i] +"</div>";
-	//strdiv=strdiv+"<div class='dashboardsummary' onClick=showDashboard('" + dashboardData.links[i] + "','" + dashboardData.dashboardName[i].replace(/ /g, '_') +".qvf" +  "')><div class='dashboardsummaryHeader'  >"+ dashboardData.dashboard[i] +"</div>";
 	strdiv=strdiv+"<div  class='qvobject' id='qv" + i + "'>"+dashboardData.description[i]+"</div></div>";
 
 }
