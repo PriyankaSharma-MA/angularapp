@@ -6,4 +6,5 @@ polymer-mixins.html;
 my-angular-module.js;
 style.css;
 qliksense.js;
-OTIS.jpg
+OTIS.jpg;
+applicationlink.js
