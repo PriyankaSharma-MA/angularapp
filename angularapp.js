@@ -14,10 +14,7 @@ rows: []
 
  SelectedArea="local";
 
-
 var prefix = window.location.pathname.substr(0, window.location.pathname.toLowerCase().lastIndexOf("/extensions") + 1);
-
-
 var config = {
 
 
@@ -233,17 +230,26 @@ dataApp.createCube( {
 var headercount=0;
 var singlefield;
 myField.forEach(function(singlefield){
+
 	singlefield.OnData.bind( function(level){
-			singlefield.rows.filter(x=>x.qText!=undefined).forEach(function(row,key){
+
+			singlefield.rows.forEach(function(row,key){
 			
-			var count=singlefield.rows.filter(x=>x.qText!=undefined).length
+			var count=singlefield.rows.length
 			if(key==0)
 			{
-			  filterDatarows=[];
+			 filterDatarows=[];
+			 if(row.field.fldname!=undefined)
+			 {
              filterData.headers.push([{"value":headercount, "text":row.field.fldname}])
 			 headercount=headercount+1;
+			 }
 			}
+
+			if(row.qText!=undefined)
+			{
 			filterDatarows.push([{"value":key+1, "text":row.qText}]) 
+			}
 			if(key+1==count)
 			{
 			if(filterDatarows.length!=0)
